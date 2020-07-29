@@ -87,7 +87,7 @@
             @csrf
 
             <div class="row files">
-                <div class="col-md-7 files">
+                <div class="col-7 files">
                     <input type="file" name="file" multiple class="@error('file') is-invalid @enderror">
 
                     @error('file')
