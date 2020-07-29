@@ -8,13 +8,26 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+
+                    @if(Session::has('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ Session::get('success') }}
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <form action="{{ route('file_upload') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <input type="file" name="file" class="form-control @error('file') is-invalid @enderror">
+
+                        @error('file')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
