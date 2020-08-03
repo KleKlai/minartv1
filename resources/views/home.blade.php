@@ -4,7 +4,22 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="alert alert-success" role="alert">
+                Your account has been created successfully.
+            </div>
+
+            <a class="" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
+            {{--  For File upload   --}}
+            {{--  <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
@@ -39,7 +54,8 @@
                         <button type="submit" class="mt-2 btn btn-primary">Submit</button>
                     </form>
                 </div>
-            </div>
+            </div>  --}}
+
         </div>
     </div>
 </div>

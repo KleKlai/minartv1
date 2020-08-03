@@ -1,8 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<h2>
+    <a class="back" href="/">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+    </a>
+    Register
+</h2>
+
 <div class="container">
-    <form method="POST" action="{{ route('register') }}">
+    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group row">
@@ -83,28 +92,21 @@
                 <input id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
         </div>
 
-        <form action="{{ route('file_upload') }}" method="POST" enctype="multipart/form-data">
-            @csrf
+        <div class="row files">
+            <div class="col-7 files">
+                <input type="file" name="file" multiple class="@error('file') is-invalid @enderror">
 
-            <div class="row files">
-                <div class="col-7 files">
-                    <input type="file" name="file" multiple class="@error('file') is-invalid @enderror">
-
-                    @error('file')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="col">
-                    <button type="submit" class="mt-2 btn btn-primary">Upload Files</button>
-                </div>
+                @error('file')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
+            {{--  <div class="col">
+                <button type="submit" class="mt-2 btn btn-primary">Upload Files</button>
+            </div>  --}}
+        </div>
 
-
-        </form>
-
-        
         <button type="submit">{{ __('SUBMIT >>>') }}</button>
     </form>
 </div>

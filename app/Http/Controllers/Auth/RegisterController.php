@@ -49,14 +49,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile'    => ['required', 'numeric'],
             'categories'=> ['required', 'string'],
             'gallery'   => ['nullable', 'string'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password'  => ['required', 'string', 'min:8', 'confirmed'],
+            'file'      => ['required', 'max:2048'],
         ]);
+
     }
 
     /**
@@ -67,6 +70,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        // $filenameWithExt = $data->file('file')->getClientOriginalName();
+
+        // // Get just filename
+        // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // // Get just ext
+        // $extension = $data->file('file')->getClientOriginalExtension();
+        // // Filename to Store
+        // $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        // //Upload the file
+        // $path = $data->file('file')->storeAs('public/files', $fileNameToStore);
+
+        $file_extention = $data['file']->getClientOriginalExtension();
+        $file_name = time().rand(99,999).'file.'.$file_extention;
+        $file_path = $data['file']->storeAs('public/files', $file_name);
+
+        // dd($file_name);
+
         return User::create([
             'name'      => $data['name'],
             'email'     => $data['email'],
@@ -74,6 +95,7 @@ class RegisterController extends Controller
             'categories'=> $data['categories'],
             'gallery'   => $data['gallery'],
             'password'  => Hash::make($data['password']),
+            'file'      => $file_name,
         ]);
     }
 }

@@ -29,7 +29,7 @@
             /* display: grid;
             justify-content: start;
             gap: 30px;
-            grid-template-areas: 
+            grid-template-areas:
                 "left picture"; */
         }
 
@@ -40,13 +40,13 @@
             background-size: 34px 27px;
         }
 
-        
+
         .root {
             margin-top: 50px;
             display: grid;
             gap: 30px;
             grid-template-rows: 420px;
-            grid-template-areas: 
+            grid-template-areas:
                 "logo form"
         }
 
@@ -195,7 +195,6 @@
 
                         <div class="col">
                             <main>
-                                <h2><a class="back" href="/"><</a> Register</h2>
                                 @yield('content')
                             </main>
                         </div>
@@ -210,7 +209,7 @@
         </div>
     </div>
 
-    
+
     <script>
         function showGallery(){
             var x = document.getElementById("categories").value;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\minart;
+use App\User;
 use Illuminate\Http\Request;
 
 class MinartController extends Controller
@@ -14,7 +15,10 @@ class MinartController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        dd($user);
+
+        return view('home');
     }
 
     /**
