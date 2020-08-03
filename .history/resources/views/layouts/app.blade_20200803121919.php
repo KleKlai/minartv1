@@ -96,12 +96,7 @@
 
         .back {
             font-size: 25px;
-            color: black;
             text-decoration: none !important;
-        }
-
-        .back:hover {
-            color: #b78032;
         }
 
         .link {

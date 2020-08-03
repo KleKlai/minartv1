@@ -100,10 +100,6 @@
             text-decoration: none !important;
         }
 
-        .back:hover {
-            color: #b78032;
-        }
-
         .link {
             font-size: 30px;
             text-decoration: none;
