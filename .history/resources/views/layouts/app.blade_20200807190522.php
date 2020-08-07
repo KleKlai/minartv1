@@ -23,7 +23,6 @@
         body {
             background-color: white;
         }
-        
         #app {
             margin-top: 17px;
         }
