@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->route('admin');
+
+        // return view('home');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+
+        // Add backend support to delete the file for the user
+
+        return redirect()->back();
     }
 }

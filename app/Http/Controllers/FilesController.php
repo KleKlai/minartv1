@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User\Files;
+use App\Model\Files;
+use App\User;
 use Illuminate\Http\Request;
 
 class FilesController extends Controller
@@ -14,7 +15,9 @@ class FilesController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('admin.admin', compact('users'));
     }
 
     /**
