@@ -20,5 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::delete('/destroy/{user}', 'HomeController@destroy')->name('destroy');
-Route::get('/admin', 'FilesController@index')->name('admin');
+Route::get('/download/{user}', 'UserController@download')->name('user.attachment');
+Route::resource('/user', 'UserController');

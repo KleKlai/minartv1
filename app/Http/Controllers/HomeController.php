@@ -24,18 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('admin');
-
-        // return view('home');
-    }
-
-    public function destroy(User $user)
-    {
-        $user->delete();
-
-
-        // Add backend support to delete the file for the user
-
-        return redirect()->back();
+        return view('home');
     }
 }

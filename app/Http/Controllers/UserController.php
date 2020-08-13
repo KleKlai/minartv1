@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Files;
 use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
-class FilesController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $users = User::all();
+        $users = User::where('id', '!=', Auth::user()->id)->get();
 
         return view('admin.admin', compact('users'));
     }
@@ -38,27 +43,27 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\User\Files  $files
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Files $files)
+    public function show(User $user)
     {
-        //
+        return view('admin.view', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User\Files  $files
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Files $files)
+    public function edit(User $user)
     {
         //
     }
@@ -67,10 +72,10 @@ class FilesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User\Files  $files
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Files $files)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -78,11 +83,23 @@ class FilesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User\Files  $files
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Files $files)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index');
+    }
+
+    public function download(User $user)
+    {
+        try{
+            return response()->download(storage_path("app/public/files/{$user->attachment}"));
+
+        } catch (\Exception  $e){
+            Session::flash('error', $user->attachment . ' could not be downloaded.');
+            return back();
+        }
     }
 }

@@ -18,7 +18,7 @@
                                 <th scope="col">Mobile</th>
                                 <th scope="col">Categories</th>
                                 <th scope="col">Attachment</th>
-                                <th scope="col">Action</th>
+                                <th scope="col"></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -30,15 +30,21 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->mobile }}</td>
                                         <td>{{ $user->categories }}</td>
-                                        <td>{{ $user->attachment }}</td>
                                         <td>
-                                            <form action="{{ route('destroy', $user) }}" method="POST">
+                                            <a href="{{ route('user.attachment', $user) }}" class="btn btn-link">
+                                            {{-- <a href="/storage/template/{{ $datas->file }}" class="btn btn-primary"> --}}
+                                                <i class="dripicons-cloud-download"></i>
+                                                Download
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('user.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <a class="text" title="Edit" data-toggle="tooltip">View</a>
+                                                <a class="btn btn-link" href="{{ route('user.show', $user->id) }}" title="View Details" data-toggle="tooltip">View</a>
 
-                                                <button type="submit" class="btn btn-danger btn-xs ml-2 delete-confirm">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-xs">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
