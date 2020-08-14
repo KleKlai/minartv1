@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'categories'=> ['required', 'string'],
             'gallery'   => ['nullable', 'string'],
             'password'  => ['required', 'string', 'min:8', 'confirmed'],
-            'file'      => ['required', 'max:2048'],
+            'file'      => ['required'],
         ]);
 
     }
