@@ -189,7 +189,7 @@
             <div class="row">
                 <div class="col-md">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             <a href="/"><img src="/images/logo.png" alt="Mindanao Art Logo"></a>
                         </div>
 
@@ -205,7 +205,7 @@
                 </div>  --}}
             </div>
 
-            <p class="footer">Copyright 2020. Mindanao Art</p>
+            {{--  <p class="footer">Copyright 2020. Mindanao Art</p>  --}}
         </div>
     </div>
 
