@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('file', 'MinartController@store')->name('file_upload');
+Route::get('/download/{user}', 'UserController@download')->name('user.attachment');
+Route::resource('/user', 'UserController');

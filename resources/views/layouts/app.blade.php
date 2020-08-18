@@ -33,7 +33,7 @@
             /* display: grid;
             justify-content: start;
             gap: 30px;
-            grid-template-areas: 
+            grid-template-areas:
                 "left picture"; */
         }
 
@@ -44,13 +44,13 @@
             background-size: 34px 27px;
         }
 
-        
+
         .root {
             margin-top: 50px;
             display: grid;
             gap: 30px;
             grid-template-rows: 420px;
-            grid-template-areas: 
+            grid-template-areas:
                 "logo form"
         }
 
@@ -199,22 +199,21 @@
 
                         <div class="col">
                             <main>
-                                <h2><a class="back" href="/"><</a> Register</h2>
                                 @yield('content')
                             </main>
                         </div>
                     </div>
                 </div>
-                <div class="col-md d-none d-lg-block">
+                {{--  <div class="col-md d-none d-lg-block">
                     <img class="picture" src="/images/image1.png" alt="Image1">
-                </div>
+                </div>  --}}
             </div>
 
             <p class="footer">Copyright 2020. Mindanao Art</p>
         </div>
     </div>
 
-    
+
     <script>
         function showGallery(){
             var x = document.getElementById("categories").value;

@@ -18,7 +18,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        
+
         <style>
             #app {
                 margin-top: 17px;
