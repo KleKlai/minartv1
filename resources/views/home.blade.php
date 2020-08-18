@@ -3,10 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="alert alert-success" role="alert">
-                Your account has been created successfully.
-            </div>
+        <div class="col-md">
 
             <a class="" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -23,19 +20,46 @@
             <div class="container">
                 <div class="row">
                     <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                {{-- <th scope="col">Description</th> --}}
+                                <th scope="col">Artist</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Style</th>
+                                <th scope="col">Medium</th>
+                                <th scope="col">Material</th>
+                                <th scope="col">Price</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr>
-                                <th>Fullname: </th>
-                                <td>{{ Auth::user()->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email: </th>
-                                <td>{{ Auth::user()->email }}</td>
-                            </tr>
-                            <tr>
-                                <th>Mobile: </th>
-                                <td>{{ Auth::user()->mobile }}</td>
-                            </tr>
+                            {{--  @foreach ($products as $product)  --}}
+                                {{--  <tr>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->artist->name }}</td>
+                                    <td>{{ $product->country->name }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->size->name ?? '' }}</td>
+                                    <td>{{ $product->dimension_height }} x {{ $product->dimension_width }} {{ $product->dimension_depth ? 'x ' . $product->dimension_depth : '' }} cm</td>
+                                    <td>{{ $product->subject->name }}</td>
+                                    <td>{{ $product->style->name }}</td>
+                                    <td>{{ $product->medium->name }}</td>
+                                    <td>{{ $product->material->name }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td class="w-12">
+                                        <div class="flex">
+                                            <a class="nav-link navbar-toggler border-none flex items-center" href="{{ route('product.edit', $product->id) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>  --}}
+                            {{--  @endforeach  --}}
                         </tbody>
                     </table>
                 </div>

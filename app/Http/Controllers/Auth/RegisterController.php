@@ -59,7 +59,6 @@ class RegisterController extends Controller
             'categories'=> ['required', 'string'],
             'gallery'   => ['nullable', 'string'],
             'password'  => ['required', 'string', 'min:8', 'confirmed'],
-            'file'      => ['required'],
         ]);
 
     }
@@ -73,9 +72,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $file_extention = $data['file']->getClientOriginalExtension();
-        $file_name = time().rand(99,999).'file.'.$file_extention;
-        $file_path = $data['file']->storeAs('public/files', $file_name);
+        // $file_extention = $data['file']->getClientOriginalExtension();
+        // $file_name = time().rand(99,999).'file.'.$file_extention;
+        // $file_path = $data['file']->storeAs('public/files', $file_name);
 
         return User::create([
             'name'      => $data['name'],
@@ -84,7 +83,6 @@ class RegisterController extends Controller
             'categories'=> $data['categories'],
             'gallery'   => $data['gallery'],
             'password'  => Hash::make($data['password']),
-            'attachment'=> $file_name,
         ]);
     }
 }

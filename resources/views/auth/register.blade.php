@@ -92,21 +92,6 @@
                 <input id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
         </div>
 
-        <div class="row files">
-            <div class="col-7 files">
-                <input type="file" name="file" multiple class="@error('file') is-invalid @enderror">
-
-                @error('file')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            {{--  <div class="col">
-                <button type="submit" class="mt-2 btn btn-primary">Upload Files</button>
-            </div>  --}}
-        </div>
-
         <button type="submit">{{ __('SUBMIT >>>') }}</button>
     </form>
 </div>

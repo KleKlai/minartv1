@@ -200,9 +200,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md d-none d-lg-block">
+                {{--  <div class="col-md d-none d-lg-block">
                     <img class="picture" src="/images/image1.png" alt="Image1">
-                </div>
+                </div>  --}}
             </div>
 
             <p class="footer">Copyright 2020. Mindanao Art</p>

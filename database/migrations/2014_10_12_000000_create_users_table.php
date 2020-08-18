@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('categories');
             $table->string('gallery')->nullable();
             $table->string('password');
-            $table->string('attachment');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
