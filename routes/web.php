@@ -22,3 +22,21 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/download/{user}', 'UserController@download')->name('user.attachment');
 Route::resource('/user', 'UserController');
+
+Route::resource('artwork', 'ArtworkController');
+
+// TODO: Components route start here
+Route::prefix('Components')->name('component.')->group(function() {
+
+    Route::resource('subject', 'Component\SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('country', 'Component\CountryController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('category', 'Component\CategoryController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('style', 'Component\StyleController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('medium', 'Component\MediumController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('material', 'Component\materialController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('size', 'Component\sizeController', ['except' => 'create', 'show', 'edit', 'update']);
+
+
+
+});
+
