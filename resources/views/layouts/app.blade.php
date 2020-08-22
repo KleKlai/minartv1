@@ -23,7 +23,7 @@
         body {
             background-color: white;
         }
-        
+
         #app {
             margin-top: 17px;
         }
@@ -184,16 +184,16 @@
             line-height: 1.5;
         }
 
-        div#columns small { 
+        div#columns small {
             font-size: 1rem;
-            float: right; 
+            float: right;
             text-transform: uppercase;
             color: #aaa;
-        } 
+        }
 
-        div#columns small a { 
-            color: #666; 
-            text-decoration: none; 
+        div#columns small a {
+            color: #666;
+            text-decoration: none;
             transition: .4s color;
         }
 
@@ -201,7 +201,7 @@
             opacity: 0.4;
         }
 
-        @media screen and (max-width: 750px) { 
+        @media screen and (max-width: 750px) {
             #columns { column-gap: 0px; }
             #columns figure { width: 100%; }
         }
@@ -233,7 +233,7 @@
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                     </button>
-                                    
+
                                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
                                         <ul class="navbar-nav mr-auto text-right">
                                         <li class="nav-item">
@@ -243,7 +243,7 @@
                                             <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Notifications</a>
+                                            <a class="nav-link" href="{{ route('view.notification') }}">Notifications</a>
                                         </li>
                                         @can('administrator')
                                         <li class="nav-item dropdown">
@@ -263,9 +263,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
-                                        </li>
                                         @endcan
                                         </ul>
                                         <ul class="navbar-nav">
@@ -275,6 +272,9 @@
                                                     {{ Auth::user()->name }}
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="nav-link" href="#changepass" data-toggle="modal" data-target="#changePassword">
+                                                        Change Password
+                                                    </a>
                                                     <a class="nav-link" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                                         document.getElementById('logout-form').submit();">
@@ -302,6 +302,46 @@
             </div>
 
             <p class="footer">Copyright 2020. Mindanao Art</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+                <form method="POST" action="{{ route('change.password') }}">
+                    @csrf
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">New Password</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Confirm Password</label>
+                            <input class="form-control" id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link text-decoration-none" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 

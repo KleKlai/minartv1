@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController')->middleware('can:administrator');
+Route::post('password', 'UserController@changePassword')->name('change.password');
 
 Route::resource('artwork', 'ArtworkController');
 Route::get('notification', 'NotificationController@index')->name('view.notification');

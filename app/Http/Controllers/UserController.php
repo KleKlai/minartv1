@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -110,5 +111,21 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('user.index');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'password'                  => 'required',
+            'password_confirmation'     => 'required|same:password'
+        ]);
+
+        Auth::user()->update([
+            'password'  =>  Hash::make($request->password)
+        ]);
+
+        \Session::flash('success', 'Password Change Successfully!');
+
+        return redirect()->back();
     }
 }
