@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\User\Files;
 use Auth;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -76,7 +77,7 @@ class RegisterController extends Controller
         // $file_name = time().rand(99,999).'file.'.$file_extention;
         // $file_path = $data['file']->storeAs('public/files', $file_name);
 
-        return User::create([
+        $user = User::create([
             'name'      => $data['name'],
             'email'     => $data['email'],
             'mobile'    => $data['mobile'],
@@ -84,5 +85,11 @@ class RegisterController extends Controller
             'gallery'   => $data['gallery'],
             'password'  => Hash::make($data['password']),
         ]);
+
+        $role = Role::select('id')->where('name', 'Artist')->first();
+
+        $user->roles()->attach($role);
+
+        return $user;
     }
 }

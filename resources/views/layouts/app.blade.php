@@ -141,6 +141,72 @@
         }
 
 
+
+
+
+        @font-face{font-family:'Calluna';
+            src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/callunasansregular-webfont.woff') format('woff');
+        }
+        body {
+            font-family: Calluna, Arial, sans-serif;
+            min-height: 1000px;
+        }
+        #columns {
+            column-width: 320px;
+            column-gap: 15px;
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        div#columns figure {
+            background: #fefefe;
+            border: 2px solid #fcfcfc;
+            box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+            margin: 0 2px 15px;
+            padding: 15px;
+            padding-bottom: 10px;
+            transition: opacity .4s ease-in-out;
+            display: inline-block;
+            column-break-inside: avoid;
+        }
+
+        div#columns figure img {
+            width: 100%; height: auto;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 5px;
+        }
+
+        div#columns figure figcaption {
+            font-size: .9rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        div#columns small { 
+            font-size: 1rem;
+            float: right; 
+            text-transform: uppercase;
+            color: #aaa;
+        } 
+
+        div#columns small a { 
+            color: #666; 
+            text-decoration: none; 
+            transition: .4s color;
+        }
+
+        div#columns:hover figure:not(:hover) {
+            opacity: 0.4;
+        }
+
+        @media screen and (max-width: 750px) { 
+            #columns { column-gap: 0px; }
+            #columns figure { width: 100%; }
+        }
+
+
     </style>
 </head>
 <body>
@@ -159,6 +225,71 @@
                         </div>
 
                         <div class="col">
+
+                            @Auth
+                                <nav class="navbar navbar-expand-lg navbar-light">
+                                    <span class="navbar-brand mb-0 h1">My Artworks</span>
+
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    
+                                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                                        <ul class="navbar-nav mr-auto text-right">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Notifications</a>
+                                        </li>
+                                        @can('administrator')
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Utility
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
+                                                <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                                                <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
+                                                <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
+                                                <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
+                                                <a class="dropdown-item" href="{{ route('component.material.index') }}">Material</a>
+                                                <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+                                        </li>
+                                        @endcan
+                                        </ul>
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
+                                                    {{ Auth::user()->name }}
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="nav-link" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+                                                </div>
+                                                </li>
+                                            </ul>
+                                    </div>
+                                </nav>
+                            @endAuth
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                            @include('utility.alert')
+
                             <main>
                                 @yield('content')
                             </main>
