@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController')->middleware('can:administrator');
 
 Route::resource('artwork', 'ArtworkController');
+Route::get('notification', 'NotificationController@index')->name('view.notification');
 
 // TODO: Components route start here
 Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
@@ -35,5 +36,16 @@ Route::prefix('Components')->name('component.')->middleware('can:administrator')
     Route::resource('material', 'Component\materialController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('size', 'Component\sizeController', ['except' => 'create', 'show', 'edit', 'update']);
 
+});
+
+Route::get('notify', function() {
+    $user = \App\User::find(1);
+
+    $details = [
+        'header' => Auth::user()->name,
+        'body' => 'test notification',
+    ];
+
+    $user->notify(new \App\Notifications\notify($details));
 });
 

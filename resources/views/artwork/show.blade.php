@@ -101,9 +101,66 @@
                         @method('DELETE')
 
                         <button type="submit" class="btn btn-danger btn-xs">Trash</button>
+                        @can('administrator')
+                            <a href="javascript:void()" class="btn btn-link" data-toggle="modal" data-target="#categoryModal">
+                                Status
+                            </a>
+                        @endcan
                     </form>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                        <form method="POST" action="{{ route('artwork.update', $artwork) }}">
+                            @csrf
+                            @method('PATCH')
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name">Status</label>
+                                    <select name="status" class="form-control">
+                                        <option value="Pending" {{ $artwork->status == 'Pending' ? 'selected' : ''  }}>Pending</option>
+                                        <option value="Approve" {{ $artwork->status == 'Approve' ? 'selected' : ''  }}>Approve</option>
+                                        <option value="Revise" {{ $artwork->status == 'Revise' ? 'selected' : ''  }}>Revise</option>
+                                        <option value="Reject" {{ $artwork->status == 'Reject' ? 'selected' : ''  }}>Reject</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="remarks">Remarks</label>
+                                    <textarea class="form-control" name="remarks" name="remarks" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link text-decoration-none" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            @if (!empty($artwork->remarks))
+                <div class="card mt-2">
+                    <div class="card-header">
+                        Remarks
+                    </div>
+                    <div class="card-body">
+                        {{ $artwork->remarks }}
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>

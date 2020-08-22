@@ -99,6 +99,16 @@ class ArtworkController extends Controller
 
         Artwork::create($request->all());
 
+        //Notify Admin for submission
+        $user = \App\User::find(1);
+
+        $details = [
+            'header' => Auth::user()->name,
+            'body' => Auth::user()->name . ' submitted art',
+        ];
+
+        $user->notify(new \App\Notifications\notify($details));
+
         \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
 
         return redirect()->route('artwork.index');
@@ -135,7 +145,29 @@ class ArtworkController extends Controller
      */
     public function update(Request $request, artwork $artwork)
     {
-        //
+        //Check if the current login user has admin previlege
+        if(\Gate::denies('administrator')){
+            return back();
+        }
+
+        $request->validate([
+            'status'        => 'required',
+            'remarks'   => 'nullable',
+        ]);
+
+        $artwork->update($request->all());
+
+        //Notify Admin for submission
+        $user = \App\User::find($artwork->artist);
+
+        $details = [
+            'header' => Auth::user()->name,
+            'body' => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
+        ];
+
+        $user->notify(new \App\Notifications\notify($details));
+
+        return back();
     }
 
     /**

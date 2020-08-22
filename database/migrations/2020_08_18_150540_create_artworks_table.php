@@ -32,6 +32,7 @@ class CreateArtworksTable extends Migration
             $table->longText('description');
             $table->string('attachment');
             $table->string('status');
+            $table->string('remarks')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
