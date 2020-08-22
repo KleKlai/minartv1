@@ -12503,6 +12503,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 Vue.component(_chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_0___default.a.name, _chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_0___default.a);
 
@@ -16975,7 +16977,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#pattern {\n    width: 100%;\n    background: url('/images/spattern.png');\n    background-repeat: repeat;\n    background-size: 34px 27px;\n}\n.picture {\n    width: 100%;\n}\n.small {\n    margin-top: 50px;\n    display: none;\n}\n.wide {\n    margin-top: 50px;\n}\n.column{\n    color: #b78032;\n    font-size: 35px;\n}\n#root {\n    display: grid;\n    justify-items: center;\n    grid-template-columns: 100px 10px 100px 10px 100px 10px 100px;\n    grid-template-areas: \n        \"day column1 hour column2 minute column3 second\"\n        \"dayl . hourl . minutel . secondl\";\n}\n.day { grid-area: day; font-size: 50px;}\n.hour { grid-area: hour; font-size: 50px;}\n.minute { grid-area: minute; font-size: 50px;}\n.second { grid-area: second; font-size: 50px;}\n.dayl { grid-area: dayl;}\n.hourl { grid-area: hourl;}\n.minutel { grid-area: minutel;}\n.secondl { grid-area: secondl;}\n.link {\n    font-size: 30px;\n    text-decoration: none;\n    color: #b78032;\n    font-weight: bold;\n}\n.link:hover{\n    text-decoration: none;\n    color: #5e4119;\n}\n@media (max-width: 992px) {\n#root {\n        display: grid;\n        justify-items: center;\n        grid-template-columns: 30px 10px 30px 10px 30px 10px 30px;\n        grid-template-areas: \n            \"day column1 hour column2 minute column3 second\"\n            \"dayl . hourl . minutel . secondl\";\n}\n.day { grid-area: day; font-size: 25px; margin: 0;}\n.hour { grid-area: hour; font-size: 25px; margin: 0;}\n.minute { grid-area: minute; font-size: 25px; margin: 0;}\n.second { grid-area: second; font-size: 25px; margin: 0;}\n.dayl { grid-area: dayl; font-size: 10px; margin: 0;}\n.hourl { grid-area: hourl; font-size: 10px; margin: 0;}\n.minutel { grid-area: minutel; font-size: 10px; margin: 0;}\n.secondl { grid-area: secondl; font-size: 10px; margin: 0;}\n.column{\n        color: #b78032;\n        font-size: 15px;\n        margin: 0;\n}\n.link {\n        font-size: 20px;\n}\n.small {\n        margin-top: 50px;\n        display: block;\n}\n.wide {\n        margin-top: 50px;\n        display: none;\n}\n.footer {\n        margin-top: 50px;\n}\n}\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: white;\n}\n#pattern {\n    width: 100%;\n    background: url('/images/spattern.png');\n    background-repeat: repeat;\n    background-size: 34px 27px;\n}\n.picture {\n    width: 100%;\n}\n.small {\n    margin-top: 50px;\n    display: none;\n}\n.wide {\n    margin-top: 50px;\n}\n.column{\n    color: #b78032;\n    font-size: 35px;\n}\n#root {\n    display: grid;\n    justify-items: center;\n    grid-template-columns: 100px 10px 100px 10px 100px 10px 100px;\n    grid-template-areas: \n        \"day column1 hour column2 minute column3 second\"\n        \"dayl . hourl . minutel . secondl\";\n}\n.day { grid-area: day; font-size: 50px;}\n.hour { grid-area: hour; font-size: 50px;}\n.minute { grid-area: minute; font-size: 50px;}\n.second { grid-area: second; font-size: 50px;}\n.dayl { grid-area: dayl;}\n.hourl { grid-area: hourl;}\n.minutel { grid-area: minutel;}\n.secondl { grid-area: secondl;}\n.link {\n    font-size: 30px;\n    text-decoration: none;\n    color: #b78032;\n    font-weight: bold;\n}\n.link:hover{\n    text-decoration: none;\n    color: #5e4119;\n}\n@media (max-width: 992px) {\n#root {\n        display: grid;\n        justify-items: center;\n        grid-template-columns: 30px 10px 30px 10px 30px 10px 30px;\n        grid-template-areas: \n            \"day column1 hour column2 minute column3 second\"\n            \"dayl . hourl . minutel . secondl\";\n}\n.day { grid-area: day; font-size: 25px; margin: 0;}\n.hour { grid-area: hour; font-size: 25px; margin: 0;}\n.minute { grid-area: minute; font-size: 25px; margin: 0;}\n.second { grid-area: second; font-size: 25px; margin: 0;}\n.dayl { grid-area: dayl; font-size: 10px; margin: 0;}\n.hourl { grid-area: hourl; font-size: 10px; margin: 0;}\n.minutel { grid-area: minutel; font-size: 10px; margin: 0;}\n.secondl { grid-area: secondl; font-size: 10px; margin: 0;}\n.column{\n        color: #b78032;\n        font-size: 15px;\n        margin: 0;\n}\n.link {\n        font-size: 20px;\n}\n.small {\n        margin-top: 50px;\n        display: block;\n}\n.wide {\n        margin-top: 50px;\n        display: none;\n}\n.footer {\n        margin-top: 50px;\n}\n}\n", ""]);
 
 // exports
 
@@ -48903,19 +48905,21 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
                 _c("p", [_vm._v("To get up-to-date news")])
               ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(3)
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container small" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(3),
+        _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c("div", { staticClass: "container" }, [
@@ -48996,17 +49000,19 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
                 _c("p", [_vm._v("To get up-to-date news")])
               ]),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(6)
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(5)
+    _vm._m(7)
   ])
 }
 var staticRenderFns = [
@@ -49032,6 +49038,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("Already have an account? "),
+      _c(
+        "a",
+        {
+          staticClass: "link",
+          staticStyle: { "font-size": "12px" },
+          attrs: { href: "/login" }
+        },
+        [_vm._v("Login")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md" }, [
       _c("img", {
         staticClass: "picture",
@@ -49049,6 +49072,23 @@ var staticRenderFns = [
           attrs: { src: "/images/logo.png", alt: "Mindanao Art Logo" }
         })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("Already have an account? "),
+      _c(
+        "a",
+        {
+          staticClass: "link",
+          staticStyle: { "font-size": "12px" },
+          attrs: { href: "/login" }
+        },
+        [_vm._v("Login")]
+      )
     ])
   },
   function() {
@@ -61492,7 +61532,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LandingComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LandingComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
@@ -61533,8 +61573,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Downloads\minartv1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\Downloads\minartv1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Scholars\00 - Projects\Mindanao Art Files\minartv1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Scholars\00 - Projects\Mindanao Art Files\minartv1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
