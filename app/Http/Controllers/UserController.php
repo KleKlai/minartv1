@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -65,7 +66,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $role = Role::all();
+
+        return view('admin.edit', compact('user', 'role'));
     }
 
     /**
@@ -77,7 +80,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name'      => 'required',
+            'email'     => 'required:unique:users,email,'. $user->id,
+            'mobile'    => 'required',
+            'role'      => 'required'
+        ]);
+
+        $user->update([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'mobile'    => $request->mobile,
+        ]);
+
+        $user->roles()->sync($request->role);
+
+        \Session::flash('success', $request->name . ' updated Successfully.');
+
+        return back();
     }
 
     /**
@@ -90,16 +110,5 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect()->route('user.index');
-    }
-
-    public function download(User $user)
-    {
-        try{
-            return response()->download(storage_path("app/public/files/{$user->attachment}"));
-
-        } catch (\Exception  $e){
-            Session::flash('error', $user->attachment . ' could not be downloaded.');
-            return back();
-        }
     }
 }

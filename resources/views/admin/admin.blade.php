@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Mobile</th>
                                 <th scope="col">Categories</th>
-                                <th scope="col">Attachment</th>
                                 <th scope="col"></th>
                               </tr>
                             </thead>
@@ -31,20 +30,13 @@
                                         <td>{{ $user->mobile }}</td>
                                         <td>{{ $user->categories }}</td>
                                         <td>
-                                            <a href="{{ route('user.attachment', $user) }}" class="btn btn-link">
-                                            {{-- <a href="/storage/template/{{ $datas->file }}" class="btn btn-primary"> --}}
-                                                <i class="dripicons-cloud-download"></i>
-                                                Download
-                                            </a>
-                                        </td>
-                                        <td>
                                             <form action="{{ route('user.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <a class="btn btn-link" href="{{ route('user.show', $user->id) }}" title="View Details" data-toggle="tooltip">View</a>
 
-                                                <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                                                <button type="submit" class="btn btn-link">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
