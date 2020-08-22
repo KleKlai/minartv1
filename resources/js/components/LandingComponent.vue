@@ -37,6 +37,7 @@
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
                                 </a>
+                                <p>Already have an account? <a class="link" style="font-size: 12px;" href="/login">Login</a></p>
                                 <p>To get up-to-date news</p>
                             </div>
                         </div>
@@ -83,6 +84,7 @@
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
                                 </a>
+                                <p>Already have an account? <a class="link" style="font-size: 12px;" href="/login">Login</a></p>
                                 <p>To get up-to-date news</p>
                             </div>
                             <div class="col">

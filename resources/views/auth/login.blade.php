@@ -1,49 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
+    <div class="row">
+        <div class="col-md">
 
-                <label for="email" class="col col-form-label">{{ __('E-Mail Address') }}</label>
+            <h2>
+                <a class="back" href="/">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </a>
+                Login
+            </h2>
 
-                <div class="col">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <div class="container">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
 
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                    <div class="form-group row">
+                            <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
 
-                <label for="password" class="col col-form-label">{{ __('Password') }}</label>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
 
-                <div class="col">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <div class="form-group row">
+                            <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
 
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
 
-                <div class="col">
-                    <button type="submit" class=" mt-4 btn btn-primary">
-                        {{ __('Login') }}
+                    <button type="submit">{{ __('SUBMIT >>>') }}
                     </button>
-                </div>
 
-                {{--  @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                @endif  --}}
-            </form>
+                    {{--  @if (Route::has('password.request'))
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif  --}}
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md d-none d-lg-block">
+            <img class="picture" src="/images/image3.png" alt="Image3">
         </div>
     </div>
-</div>
 @endsection

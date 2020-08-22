@@ -12503,6 +12503,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 Vue.component(_chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_0___default.a.name, _chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_0___default.a);
 
@@ -48903,19 +48905,21 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
                 _c("p", [_vm._v("To get up-to-date news")])
               ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(3)
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container small" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(3),
+        _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "col" }, [
           _c("div", { staticClass: "container" }, [
@@ -48996,17 +49000,19 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
                 _c("p", [_vm._v("To get up-to-date news")])
               ]),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(6)
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(5)
+    _vm._m(7)
   ])
 }
 var staticRenderFns = [
@@ -49032,6 +49038,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("Already have an account? "),
+      _c(
+        "a",
+        {
+          staticClass: "link",
+          staticStyle: { "font-size": "12px" },
+          attrs: { href: "/login" }
+        },
+        [_vm._v("Login")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md" }, [
       _c("img", {
         staticClass: "picture",
@@ -49049,6 +49072,23 @@ var staticRenderFns = [
           attrs: { src: "/images/logo.png", alt: "Mindanao Art Logo" }
         })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("Already have an account? "),
+      _c(
+        "a",
+        {
+          staticClass: "link",
+          staticStyle: { "font-size": "12px" },
+          attrs: { href: "/login" }
+        },
+        [_vm._v("Login")]
+      )
     ])
   },
   function() {
@@ -61492,7 +61532,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LandingComponent.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LandingComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LandingComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
@@ -61533,8 +61573,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Downloads\minartv1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\Downloads\minartv1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Scholars\00 - Projects\Mindanao Art Files\minartv1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Scholars\00 - Projects\Mindanao Art Files\minartv1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
