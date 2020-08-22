@@ -194,14 +194,57 @@
                         </div>
 
                         <div class="col">
-                            @if(Session::has('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Success!</strong> {{ Session::get('success') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
+
+                            @Auth
+                                <nav class="navbar navbar-expand-lg navbar-light">
+                                    <div class="collapse navbar-collapse " id="navbarText">
+                                        <ul class="navbar-nav mr-auto text-right">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
+                                        </li>
+                                        @can('administrator')
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Utility
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
+                                                <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                                                <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
+                                                <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
+                                                <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
+                                                <a class="dropdown-item" href="{{ route('component.material.index') }}">Material</a>
+                                                <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+                                        </li>
+                                        @endcan
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </li>
+                                        </ul>
+                                        <span class="navbar-text">
+                                            {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
+                                            {{ Auth::user()->name }}
+                                        </span>
+                                    </div>
+                                </nav>
+                            @endAuth
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                            @include('utility.alert')
 
                             <main>
                                 @yield('content')
@@ -214,7 +257,7 @@
                 </div>  --}}
             </div>
 
-            {{--  <p class="footer">Copyright 2020. Mindanao Art</p>  --}}
+            <p class="footer">Copyright 2020. Mindanao Art</p>
         </div>
     </div>
 

@@ -25,7 +25,7 @@ Route::resource('/user', 'UserController')->middleware('can:administrator');
 Route::resource('artwork', 'ArtworkController');
 
 // TODO: Components route start here
-Route::prefix('Components')->name('component.')->group(function() {
+Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
 
     Route::resource('subject', 'Component\SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('country', 'Component\CountryController', ['except' => 'create', 'show', 'edit', 'update']);

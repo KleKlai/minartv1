@@ -15,6 +15,7 @@ class CreateArtworksTable extends Migration
     {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('name');
             $table->integer('artist');
             $table->string('subject');
@@ -23,13 +24,14 @@ class CreateArtworksTable extends Migration
             $table->string('style');
             $table->string('medium');
             $table->string('material');
-            $table->string('size')->nullable();
+            $table->string('size');
             $table->string('height');
             $table->string('width');
             $table->string('depth')->nullable();
             $table->string('price');
-            $table->longText('description')->nullable();
+            $table->longText('description');
             $table->string('attachment');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });

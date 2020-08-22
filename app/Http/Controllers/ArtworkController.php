@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Artwork;
+use Auth;
 use Illuminate\Http\Request;
 
 // Components
@@ -19,8 +20,11 @@ class ArtworkController extends Controller
 
     public function index()
     {
-        $artwork = Artwork::all();
-        // dd($artwork);
+        if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
+            $artwork = Artwork::all();
+        } else {
+            $artwork = Artwork::where('artist', Auth::user()->id)->get();
+        }
 
         return view('artwork.index', compact('artwork'));
     }
@@ -78,17 +82,20 @@ class ArtworkController extends Controller
             'attachment'    => ['nullable', 'mimes:jpg,png,jpeg'],
         ]);
 
-        // Upload File
-        $file_extention = $request['attachment']->getClientOriginalExtension();
-        // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
-        $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
-        $file_path = $request['attachment']->storeAs('public/files', $file_name);
+        if($request->hasFile('profile')){
+            // Upload File
+            $file_extention = $request['attachment']->getClientOriginalExtension();
+            // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
+            $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
+            $file_path = $request['attachment']->storeAs('public/files', $file_name);
 
-        //Modify attachment data from File to File Name
-        $request->merge(['attachment' => $file_name]);
+            //Modify attachment data from File to File Name
+            $request->merge(['attachment' => $file_name]);
+        }
 
         //Add Artist Request
         $request->request->add(['artist' => \Auth::user()->id]);
+        $request->request->add(['status' => 'Pending']);
 
         Artwork::create($request->all());
 
@@ -105,7 +112,7 @@ class ArtworkController extends Controller
      */
     public function show(artwork $artwork)
     {
-        //
+        return view('artwork.show', compact('artwork'));
     }
 
     /**
@@ -116,7 +123,7 @@ class ArtworkController extends Controller
      */
     public function edit(artwork $artwork)
     {
-        //
+        dd($artwork);
     }
 
     /**
@@ -139,6 +146,10 @@ class ArtworkController extends Controller
      */
     public function destroy(artwork $artwork)
     {
-        //
+        $artwork->delete();
+
+        \Session::flash('success', $artwork->name . ' deleted successfully!');
+
+        return view('artwork.index');
     }
 }
