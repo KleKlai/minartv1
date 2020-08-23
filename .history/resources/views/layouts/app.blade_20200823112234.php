@@ -15,15 +15,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
         body {
             background-color: white;
         }
@@ -122,16 +118,6 @@
         .link:hover{
             text-decoration: none;
             color: #5e4119;
-        }
-
-        .nav-link {
-            font-size: 12px;
-            color: black;
-        }
-
-        .nav-link:hover{
-            text-decoration: none;
-            color: #b78032 !important;
         }
 
         .footer {
@@ -248,7 +234,7 @@
 
                                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
-                                        <ul class="navbar-nav mr-auto">
+                                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                                             </li>
@@ -256,9 +242,7 @@
                                                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('view.notification') }}">
-                                                    Notifications<span class="badge badge-light">4</span>
-                                                </a>
+                                                <a class="nav-link" href="{{ route('view.notification') }}">Notifications</a>
                                             </li>
                                             @can('administrator')
                                             <li class="nav-item dropdown">
@@ -283,15 +267,15 @@
 
                                         <ul class="navbar-nav">
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
                                                     {{ Auth::user()->name }}
                                                 </a>
-                                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                    <a class="dropdown-item" href="#changepass" data-toggle="modal" data-target="#changePassword">
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="nav-link" href="#changepass" data-toggle="modal" data-target="#changePassword">
                                                         Change Password
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    <a class="nav-link" href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                                         document.getElementById('logout-form').submit();">
                                                         {{ __('Logout') }}

@@ -15,15 +15,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
         body {
             background-color: white;
         }
@@ -122,16 +118,6 @@
         .link:hover{
             text-decoration: none;
             color: #5e4119;
-        }
-
-        .nav-link {
-            font-size: 12px;
-            color: black;
-        }
-
-        .nav-link:hover{
-            text-decoration: none;
-            color: #b78032 !important;
         }
 
         .footer {
@@ -256,9 +242,7 @@
                                                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('view.notification') }}">
-                                                    Notifications<span class="badge badge-light">4</span>
-                                                </a>
+                                                <a class="nav-link" href="{{ route('view.notification') }}">Notifications</a>
                                             </li>
                                             @can('administrator')
                                             <li class="nav-item dropdown">

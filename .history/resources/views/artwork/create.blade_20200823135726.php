@@ -127,12 +127,12 @@
                     </div>
                 </div>
 
-                <!-- <form>
+                <form>
                     <div class="form-group">
-                        <label for="attachment">Upload product photo</label>
-                        <input type="file" class="form-control-file" id="attachment" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
+                        <label for="exampleFormControlFile1">Upload product photo</label>
+                        <input type="file" class="custom-file-input" id="exampleFormControlFile1">
                     </div>
-                </form> -->
+                </form>
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="/home" class="btn border-none">Cancel</a>

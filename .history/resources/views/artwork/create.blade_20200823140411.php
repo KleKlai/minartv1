@@ -119,13 +119,13 @@
                 <textarea name="description" class="form-control" rows="5" required>{{ old('description') }}</textarea>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="attachment">Upload product photo</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
                         <label class="custom-file-label" for="attachment">Choose file</label>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <form>
                     <div class="form-group">
@@ -133,6 +133,17 @@
                         <input type="file" class="form-control-file" id="attachment" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
                     </div>
                 </form> -->
+
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="/home" class="btn border-none">Cancel</a>

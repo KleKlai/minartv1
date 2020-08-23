@@ -22,7 +22,7 @@
 
     <style>
         * {
-            font-family: 'Montserrat';
+        font-family: 'Montserrat';
         }
         body {
             background-color: white;
@@ -125,7 +125,7 @@
         }
 
         .nav-link {
-            font-size: 12px;
+            font-size: 14px;
             color: black;
         }
 

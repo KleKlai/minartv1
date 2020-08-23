@@ -22,7 +22,7 @@
 
     <style>
         * {
-            font-family: 'Montserrat';
+        font-family: 'Montserrat';
         }
         body {
             background-color: white;

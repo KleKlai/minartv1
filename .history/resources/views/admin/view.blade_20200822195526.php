@@ -62,8 +62,8 @@
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
-                        <a class="btn btn-secondary" href="{{ route('user.edit', $user) }}" class="btn btn-link">Edit</a>
+                        <button type="submit" class="btn btn-danger btn-xs">Trash</button>
+                        <a href="{{ route('user.edit', $user) }}" class="btn btn-link">Edit</a>
                     </form>
 
                 </div>

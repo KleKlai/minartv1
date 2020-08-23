@@ -6,7 +6,7 @@
         <div class="col">
 
                 @forelse($data as $notification)
-            <a class="nav-link" href="/artwork/5820a44f-61f3-45cd-a924-d50dc7f01a19">
+            <a href="/artwork/5820a44f-61f3-45cd-a924-d50dc7f01a19">
                 <div class="card">
                         <div class="card-body">
                             {{ $notification->data['data'] }}

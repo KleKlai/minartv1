@@ -15,15 +15,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Montserrat';
-        }
         body {
             background-color: white;
         }
@@ -126,7 +122,8 @@
 
         .nav-link {
             font-size: 12px;
-            color: black;
+            text-decoration: none;
+            color: #5e4119 !important;
         }
 
         .nav-link:hover{

@@ -45,7 +45,7 @@
                                 <td>₱ {{ $data->price }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('artwork.show', $data) }}">view</a>
+                                    <a class="link" href="{{ route('artwork.show', $data) }}">View</a>
                                 </td>
                             </tr>
                         @empty
