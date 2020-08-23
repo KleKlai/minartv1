@@ -96,14 +96,15 @@ class ArtworkController extends Controller
         $request->request->add(['status' => 'Pending']);
 
         //Remove file $request
-        Artwork::create($request->except(['file']));
+        $artwork = Artwork::create($request->except(['file']));
 
         //Notify Admin for submission
         $user = \App\User::find(1);
 
         $details = [
-            'header' => Auth::user()->name,
-            'body' => Auth::user()->name . ' submitted art',
+            'header'    => Auth::user()->name,
+            'subject'   => $artwork->uuid,
+            'body'      => Auth::user()->name . ' submitted art ' . $request->name,
         ];
 
         $user->notify(new \App\Notifications\notify($details));
@@ -160,8 +161,9 @@ class ArtworkController extends Controller
         $user = \App\User::find($artwork->artist);
 
         $details = [
-            'header' => Auth::user()->name,
-            'body' => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
+            'header'    => Auth::user()->name,
+            'subject'   => $artwork->uuid,
+            'body'      => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
         ];
 
         $user->notify(new \App\Notifications\notify($details));
@@ -181,6 +183,17 @@ class ArtworkController extends Controller
 
         \Session::flash('success', $artwork->name . ' deleted successfully!');
 
-        return view('artwork.index');
+        return redirect()->route('artwork.index');
+    }
+
+    public function download(Artwork $artwork)
+    {
+        try{
+            return response()->download(storage_path("app/public/artwork/{$artwork->attachment}"));
+
+        } catch (\Exception  $e){
+            Session::flash('error', $artwork->name . ' could not be downloaded.');
+            return back();
+        }
     }
 }

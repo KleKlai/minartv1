@@ -25,6 +25,7 @@ Route::post('password', 'UserController@changePassword')->name('change.password'
 
 Route::resource('artwork', 'ArtworkController');
 Route::get('notification', 'NotificationController@index')->name('view.notification');
+Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
 // TODO: Components route start here
 Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
@@ -50,3 +51,18 @@ Route::get('notify', function() {
     $user->notify(new \App\Notifications\notify($details));
 });
 
+Route::get('/clear', function(){
+
+	auth()->user()->unreadNotifications->markAsRead();
+
+	return redirect()->back();
+
+})->name('markAllAsRead');
+
+Route::get('/markAsRead/{id}', function($id){
+
+	auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+
+	return redirect()->back();
+
+})->name('markRead');

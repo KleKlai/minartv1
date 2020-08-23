@@ -257,7 +257,7 @@
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('view.notification') }}">
-                                                    Notifications<span class="badge badge-light">4</span>
+                                                    Notifications<span class="badge badge-light">{{ auth()->user()->unreadNotifications()->count()  }}</span>
                                                 </a>
                                             </li>
                                             @can('administrator')
