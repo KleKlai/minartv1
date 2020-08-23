@@ -4,12 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            @can('artist')
+
             <a href="{{ route('artwork.create') }}" class="link mb-3">
-                +
+                + Artwork
             </a>
-            @endcan
-            <a href="" class="link mb-3">Artworks</a>
 
             <table class="table">
                 <thead>
@@ -57,6 +55,18 @@
                         @endforelse
                 </tbody>
             </table>
+
+            <div class="form-outline mb-4">
+            <input
+                type="text"
+                class="form-control"
+                id="datatable-search-input"
+            />
+            <label class="form-label" for="datatable-search-input">Search</label>
+            </div>
+            <div id="datatable">
+            </div>
+            
         </div>
     </div>
 </div>

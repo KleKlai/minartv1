@@ -135,7 +135,7 @@
                 </form>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="/artwork" class="btn border-none">Cancel</a>
+                <a href="/home" class="btn border-none">Cancel</a>
             </form>
 
         </div>

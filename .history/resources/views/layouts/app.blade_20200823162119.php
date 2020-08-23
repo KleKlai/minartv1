@@ -20,23 +20,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
-    <!-- Font Awesome -->
-    <link
-    href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.css"
-    rel="stylesheet"
-    />
-
     <style>
         * {
             font-family: 'Montserrat';
@@ -171,6 +154,15 @@
             width: 100%;
         }
 
+
+
+        @font-face{font-family:'Calluna';
+            src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/callunasansregular-webfont.woff') format('woff');
+        }
+        body {
+            font-family: Calluna, Arial, sans-serif;
+            min-height: 1000px;
+        }
         #columns {
             column-width: 320px;
             column-gap: 15px;
@@ -227,6 +219,20 @@
         }
 
 
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_asc_disabled:after,
+        table.dataTable thead .sorting_asc_disabled:before,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting_desc:before,
+        table.dataTable thead .sorting_desc_disabled:after,
+        table.dataTable thead .sorting_desc_disabled:before {
+        bottom: .5em;
+        }
+
+
     </style>
 </head>
 <body>
@@ -238,87 +244,91 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-2 d-none d-sm-none d-md-none d-lg-block">
-                    <a href="/"><img src="/images/logo.png" alt="Mindanao Art Logo"></a>
-                </div>
+                <div class="col-md">
+                    <div class="row">
+                        <div class="col-2 d-none d-sm-none d-md-none d-lg-block">
+                            <a href="/"><img src="/images/logo.png" alt="Mindanao Art Logo"></a>
+                        </div>
 
-                <div class="col">
+                        <div class="col">
 
-                    @Auth
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <span class="navbar-brand mb-0 h1">Artworks</span>
+                            @Auth
+                                <nav class="navbar navbar-expand-lg navbar-light">
+                                    <span class="navbar-brand mb-0 h1">Artworks</span>
 
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
 
-                            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('view.notification') }}">
-                                            Notifications<span class="badge badge-light">4</span>
-                                        </a>
-                                    </li>
-                                    @can('administrator')
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Utility
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                                            <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
-                                            <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
-                                            <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
-                                            <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
-                                            <a class="dropdown-item" href="{{ route('component.material.index') }}">Material</a>
-                                            <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
-                                    </li>
-                                    @endcan
-                                </ul>
+                                        <ul class="navbar-nav mr-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('view.notification') }}">
+                                                    Notifications<span class="badge badge-light">4</span>
+                                                </a>
+                                            </li>
+                                            @can('administrator')
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Utility
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
+                                                    <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                                                    <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
+                                                    <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
+                                                    <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
+                                                    <a class="dropdown-item" href="{{ route('component.material.index') }}">Material</a>
+                                                    <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+                                            </li>
+                                            @endcan
+                                        </ul>
 
-                                <ul class="navbar-nav">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
-                                            {{ Auth::user()->name }}
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#changepass" data-toggle="modal" data-target="#changePassword">
-                                                Change Password
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
+                                                    {{ Auth::user()->name }}
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                    <a class="dropdown-item" href="#changepass" data-toggle="modal" data-target="#changePassword">
+                                                        Change Password
+                                                    </a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
 
-                            </div>
-                        </nav>
-                    @endAuth
+                                    </div>
+                                </nav>
+                            @endAuth
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
 
-                    @include('utility.alert')
+                            @include('utility.alert')
 
-                    <main>
-                        @yield('content')
-                    </main>
+                            <main>
+                                @yield('content')
+                            </main>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -368,7 +378,6 @@
 
 
     <script>
-
         function showGallery(){
             var x = document.getElementById("categories").value;
             if(x == "Gallery"){
@@ -380,11 +389,11 @@
                 y.classList.add('d-none');
             }
         }
+
+        $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+        });
     </script>
-    <!-- MDB -->
-    <script
-        type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js"
-    ></script>
 </body>
 </html>

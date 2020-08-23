@@ -6,10 +6,9 @@
         <div class="col">
             @can('artist')
             <a href="{{ route('artwork.create') }}" class="link mb-3">
-                +
+                + Artwork
             </a>
             @endcan
-            <a href="" class="link mb-3">Artworks</a>
 
             <table class="table">
                 <thead>

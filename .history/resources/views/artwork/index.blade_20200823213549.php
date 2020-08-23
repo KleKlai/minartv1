@@ -9,7 +9,7 @@
                 +
             </a>
             @endcan
-            <a href="" class="link mb-3">Artworks</a>
+            <a href="" class="link disabled mb-3">Artworks</a>
 
             <table class="table">
                 <thead>
