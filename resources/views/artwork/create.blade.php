@@ -116,13 +116,13 @@
 
                 <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
+                <textarea name="description" class="form-control" rows="5" required>{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="attachment">Upload product photo</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="attachment" aria-describedby="Product Image" value="{{ old('attachment') }}">
+                        <input type="file" class="custom-file-input" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
                         <label class="custom-file-label" for="attachment">Choose file</label>
                     </div>
                 </div>

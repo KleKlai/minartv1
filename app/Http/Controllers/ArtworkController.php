@@ -79,25 +79,34 @@ class ArtworkController extends Controller
             'depth'         => ['nullable', 'integer', 'min:0'],
             'price'         => ['required', 'integer', 'min:0'],
             'description'   => ['nullable', 'string'],
-            'attachment'    => ['nullable', 'mimes:jpg,png,jpeg'],
+            'file'          => ['nullable', 'mimes:jpg,png,jpeg'],
         ]);
 
-        if($request->hasFile('profile')){
-            // Upload File
-            $file_extention = $request['attachment']->getClientOriginalExtension();
-            // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
-            $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
-            $file_path = $request['attachment']->storeAs('public/files', $file_name);
+        // Upload File
+        $file_extention = $request['file']->getClientOriginalExtension();
+        // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
+        $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
+        $file_path = $request['file']->storeAs('public/artwork', $file_name);
 
-            //Modify attachment data from File to File Name
-            $request->merge(['attachment' => $file_name]);
-        }
+        // dd($file_name);
+        $request->merge(['attachment' => $file_name]);
 
         //Add Artist Request
         $request->request->add(['artist' => \Auth::user()->id]);
         $request->request->add(['status' => 'Pending']);
 
-        Artwork::create($request->all());
+        //Remove file $request
+        Artwork::create($request->except(['file']));
+
+        //Notify Admin for submission
+        $user = \App\User::find(1);
+
+        $details = [
+            'header' => Auth::user()->name,
+            'body' => Auth::user()->name . ' submitted art',
+        ];
+
+        $user->notify(new \App\Notifications\notify($details));
 
         \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
 
@@ -135,7 +144,29 @@ class ArtworkController extends Controller
      */
     public function update(Request $request, artwork $artwork)
     {
-        //
+        //Check if the current login user has admin previlege
+        if(\Gate::denies('administrator')){
+            return back();
+        }
+
+        $request->validate([
+            'status'        => 'required',
+            'remarks'   => 'nullable',
+        ]);
+
+        $artwork->update($request->all());
+
+        //Notify Admin for submission
+        $user = \App\User::find($artwork->artist);
+
+        $details = [
+            'header' => Auth::user()->name,
+            'body' => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
+        ];
+
+        $user->notify(new \App\Notifications\notify($details));
+
+        return back();
     }
 
     /**
