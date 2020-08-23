@@ -30,7 +30,7 @@
                                     @csrf
                                     @method('DELETE')  --}}
 
-                                    <a class="btn btn-info" href="{{ route('user.show', $user->uuid) }}" title="View Details" data-toggle="tooltip">View</a>
+                                    <a href="{{ route('user.show', $user->uuid) }}" title="View Details" data-toggle="tooltip">View</a>
 
                                     {{--  <button type="submit" class="btn btn-link">Delete</button>
                                 </form>  --}}

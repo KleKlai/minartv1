@@ -3,27 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-5 mb-3">
-            <img class="picture mb-1" src="/images/TBH_RWSX-55.jpg" alt="Artwork Picture">
+        <div class="col-sm-4">
+            <img class="picture" src="/images/TBH_RWSX-55.jpg" alt="Artwork Picture">
             
 
-            <!-- <div class="form-group">
-                 <label class="text-muted"for="attachment">Upload product photo <span class="text-muted">( Optional )</span></label>
-                
-            </div> -->
+            <div class="form-group">
+                <label for="attachment">Upload product photo <span class="text-muted">( Optional )</span></label>
+                <div class="custom-file">
+                    <a href="#download">Download</a>
+                </div>
+            </div>
 
             <form action="{{ route('artwork.destroy', $artwork) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+
+                <button type="submit" class="btn btn-danger btn-xs">Trash</button>
                 @can('administrator')
-                    <a href="javascript:void()" class="btn btn-warning" data-toggle="modal" data-target="#categoryModal">
-                        Update Status
+                    <a href="javascript:void()" class="btn btn-link" data-toggle="modal" data-target="#categoryModal">
+                        Status
                     </a>
                 @endcan
-                <a class="btn btn-light" href="#download">Download</a>
             </form>
-        </div>
+            </div>
         <div class="col">
 
             <div class="card">
@@ -33,81 +35,81 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="name">Status:</label>
+                            <label for="name">Status</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->status }}" readonly>
                         </div>
-                        <div class="form-group col-md-8">
-                             <label class="text-muted"for="name">Name:</label>
+                        <div class="form-group col-md-4">
+                            <label for="name">Name</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->name }}" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                     <div class="form-group col-md-4">
-                         <label class="text-muted"for="subject">Subject:</label>
+                        <label for="subject">Subject</label>
                         <input type="text" class="form-control-plaintext" value="{{ $artwork->subject }}" readonly>
                     </div>
 
                     <div class="form-group col-md-4">
-                         <label class="text-muted"for="country">Country:</label>
+                        <label for="country">Country</label>
                         <input type="text" class="form-control-plaintext" value="{{ $artwork->country }}" readonly>
                     </div>
 
                     <div class="form-group col-md-4">
-                         <label class="text-muted"for="category">Category:</label>
+                        <label for="category">Category</label>
                         <input type="text" class="form-control-plaintext" value="{{ $artwork->category }}" readonly>
                     </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="style">Style:</label>
+                            <label for="style">Style</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->style }}" readonly>
                         </div>
 
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="medium">Medium:</label>
+                            <label for="medium">Medium</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->medium }}" readonly>
                         </div>
 
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="material">Material:</label>
+                            <label for="material">Material</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->material }}" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                             <label class="text-muted"for="size">Size:</label>
+                            <label for="size">Size <span class="text-muted">( Optional )</span></label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->size }}" readonly>
                         </div>
 
                         <div class="form-group col-md-2">
-                             <label class="text-muted"for="height">Height:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->height }} cm" readonly>
+                            <label for="height">Height</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->height }}" readonly>
                         </div>
 
                         <div class="form-group col-md-2">
-                             <label class="text-muted"for="country">Width:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->width }} cm" readonly>
+                            <label for="country">Width</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->width }}" readonly>
                         </div>
 
                         <div class="form-group col-md-2">
-                             <label class="text-muted"for="depth">Depth:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->depth }} cm" readonly>
+                            <label for="depth">Depth</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->depth }}" readonly>
                         </div>
 
                         <div class="form-group col-md-3">
-                             <label class="text-muted"for="price">Price:</label>
+                            <label for="price">Price</label>
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control-plaintext" value="₱ {{ $artwork->price }}" readonly>
+                                <input type="text" class="form-control-plaintext" value="{{ $artwork->price }}" readonly>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                     <label class="text-muted"for="description">Description:</span></label>
-                    <textarea name="description" class="form-control-plaintext" rows="3" readonly>{{ $artwork->description }}</textarea>
+                    <label for="description">Description <span class="text-muted">( Optional )</span></label>
+                    <textarea name="description" class="form-control-plaintext" rows="3" readonly>{{ $artwork->price }}</textarea>
                     </div>
                 </div>
             </div>
@@ -129,7 +131,7 @@
 
                             <div class="modal-body">
                                 <div class="form-group">
-                                     <label class="text-muted"for="name">Status</label>
+                                    <label for="name">Status</label>
                                     <select name="status" class="form-control">
                                         <option value="Pending" {{ $artwork->status == 'Pending' ? 'selected' : ''  }}>Pending</option>
                                         <option value="Approve" {{ $artwork->status == 'Approve' ? 'selected' : ''  }}>Approve</option>
@@ -138,7 +140,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                     <label class="text-muted"for="remarks">Remarks</label>
+                                    <label for="remarks">Remarks</label>
                                     <textarea class="form-control" name="remarks" name="remarks" rows="2"></textarea>
                                 </div>
                             </div>

@@ -134,6 +134,12 @@
                     </div>
                 </form> -->
 
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="/home" class="btn border-none">Cancel</a>
             </form>
