@@ -4,13 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 mb-3">
-            <img class="picture mb-1" src="/images/TBH_RWSX-55.jpg" alt="Artwork Picture">
-            
-
-            <!-- <div class="form-group">
-                 <label class="text-muted"for="attachment">Upload product photo <span class="text-muted">( Optional )</span></label>
-                
-            </div> -->
+            <img class="picture mb-1" src="{{ url('storage/artwork/'.$artwork->attachment) }}" alt="Artwork Picture">
 
             <form action="{{ route('artwork.destroy', $artwork) }}" method="POST">
                 @csrf
@@ -21,7 +15,7 @@
                         Update Status
                     </a>
                 @endcan
-                <a class="btn btn-light" href="#download">Download</a>
+                <a class="btn btn-light" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
         </div>
         <div class="col">

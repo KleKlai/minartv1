@@ -56,8 +56,9 @@ class notify extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'title' => $this->details['header'],
-            'data' => $this->details['body']
+            'title'     => $this->details['header'],
+            'subject'   => $this->details['subject'],
+            'data'      => $this->details['body'],
          ];
     }
 

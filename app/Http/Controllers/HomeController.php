@@ -27,13 +27,13 @@ class HomeController extends Controller
     public function index()
     {
 
-        // if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
-        //     $data = Artwork::all();
-        // } else {
-        //     $data = Artwork::where('artist', Auth::user()->id)->get();
-        // }
+        if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
+            $data = Artwork::all();
+        } else {
+            $data = Artwork::where('artist', Auth::user()->id)->get();
+        }
 
-        $data = [];
+        // $data = [];
 
         return view('home', compact('data'));
     }
