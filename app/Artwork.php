@@ -2,14 +2,16 @@
 
 namespace App;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use Webpatser\Uuid\Uuid;
 use App\User;
 
 class Artwork extends Model
 {
-    use SoftDeletes;
+    use Notifiable, SoftDeletes;
 
     protected $guarded = [
         'id', 'created_at', 'updated_at', 'deleted_at'
