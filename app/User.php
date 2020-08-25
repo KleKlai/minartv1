@@ -80,4 +80,9 @@ class User extends Authenticatable
         return false;
     }
 
+    public function artwork()
+    {
+        return $this->belongsToMany('App\Artwork');
+    }
+
 }

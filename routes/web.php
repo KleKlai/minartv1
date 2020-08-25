@@ -31,7 +31,7 @@ Route::get('download/{artwork}', 'ArtworkController@download')->name('download.a
 Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
 
     Route::resource('subject', 'Component\SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('country', 'Component\CountryController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('city', 'Component\CityController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('category', 'Component\CategoryController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('style', 'Component\StyleController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('medium', 'Component\MediumController', ['except' => 'create', 'show', 'edit', 'update']);

@@ -17,9 +17,10 @@ class CreateArtworksTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name');
-            $table->integer('artist');
+            $table->unsignedBigInteger('artist');
+            $table->foreign('artist')->references('id')->on('users')->onDelete('cascade');
             $table->string('subject');
-            $table->string('country');
+            $table->string('city');
             $table->string('category');
             $table->string('style');
             $table->string('medium');

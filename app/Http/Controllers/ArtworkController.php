@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 // Components
 use App\Model\Subject;
-use App\Model\Country;
+use App\Model\City;
 use App\Model\Category;
 use App\Model\Style;
 use App\Model\Medium;
@@ -44,7 +44,7 @@ class ArtworkController extends Controller
         // TODO: Return here all necessary drop down DATA
 
         $subject    = Subject::all();
-        $country    = Country::all();
+        $city       = City::all();
         $category   = Category::all();
         $style      = Style::all();
         $medium     = Medium::all();
@@ -53,7 +53,7 @@ class ArtworkController extends Controller
 
         return view('artwork.create', compact(
             'subject',
-            'country',
+            'city',
             'category',
             'style',
             'medium',
@@ -73,7 +73,7 @@ class ArtworkController extends Controller
         $request->validate([
             'name'          => ['required', 'string'],
             'subject'       => ['required', 'string'],
-            'country'       => ['required', 'string'],
+            'city'          => ['required', 'string'],
             'category'      => ['required', 'string'],
             'style'         => ['required', 'string'],
             'medium'        => ['required', 'string'],
