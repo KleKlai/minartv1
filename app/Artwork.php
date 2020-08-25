@@ -32,4 +32,9 @@ class Artwork extends Model
         return 'uuid';
     }
 
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
 }

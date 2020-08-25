@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -90,12 +90,13 @@
             <div class="card">
                 <div class="card-header">
                     Artwork Details
+                    <span class="badge badge-primary float-right">{{ $artwork->status }}</span>
                 </div>
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="name">Status:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->status }}" readonly>
+                             <label class="text-muted"for="name">Artist:</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->artist }}" readonly>
                         </div>
                         <div class="form-group col-md-8">
                              <label class="text-muted"for="name">Name:</label>
@@ -111,7 +112,7 @@
 
                     <div class="form-group col-md-4">
                          <label class="text-muted"for="country">Country:</label>
-                        <input type="text" class="form-control-plaintext" value="{{ $artwork->country }}" readonly>
+                        <input type="text" class="form-control-plaintext" value="{{ $artwork->city }}" readonly>
                     </div>
 
                     <div class="form-group col-md-4">

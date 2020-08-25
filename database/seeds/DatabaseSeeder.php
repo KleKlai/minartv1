@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ComponentMedium::class);
         $this->call(ComponentSize::class);
         $this->call(ComponentStyle::class);
+        $this->call(CityTableSeeder::class);
     }
 }

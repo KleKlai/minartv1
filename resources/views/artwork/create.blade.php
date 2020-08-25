@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -92,11 +92,11 @@
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="country">Country</label>
-                    <select name="country" class="form-control" value="{{ old('country') }}" required>
+                    <label for="city">City</label>
+                    <select name="city" class="form-control" value="{{ old('city') }}" required>
                         <option value="">-</option>
-                        @foreach($country as $country)
-                            <option value="{{ $country->name }}">{{ $country->name }}</option>
+                        @foreach($city as $city)
+                            <option value="{{ $city->name }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -161,7 +161,7 @@
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="country">Width</label>
+                        <label for="width">Width</label>
                         <input type="number" class="form-control" name="width" placeholder="(in cm)" min="0" value="{{ old('width') }}" required>
                     </div>
 

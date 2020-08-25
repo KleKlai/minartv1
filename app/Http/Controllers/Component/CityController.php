@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Component;
 
 use App\Http\Controllers\Controller;
-use App\Model\Country as Model;
+use App\Model\City as Model;
 use Illuminate\Http\Request;
 
-class CountryController extends Controller
+class CityController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -17,7 +21,7 @@ class CountryController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.country.index', compact('data'));
+        return view('component.city.index', compact('data'));
     }
 
     /**
@@ -53,10 +57,10 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show(City $city)
     {
         //
     }
@@ -64,10 +68,10 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(City $city)
     {
         //
     }
@@ -76,10 +80,10 @@ class CountryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, City $city)
     {
         //
     }
@@ -87,14 +91,14 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $country)
+    public function destroy(City $city)
     {
-        $country->delete();
+        $city->delete();
 
-        \Session::flash('success', $country->name . ' has been remove successfully.');
+        \Session::flash('success', $city->name . ' has been remove successfully.');
 
         return back();
     }

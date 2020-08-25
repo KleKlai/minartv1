@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">Country</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -72,7 +72,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-                
+
             <div id="columns">
                 @forelse($data as $data)
                     <a href="{{ route('artwork.show', $data) }}">

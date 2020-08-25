@@ -25,7 +25,7 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->description }}</td>
                             <td>
-                                <form action="{{ route('component.country.destroy', $data) }}" method="POST">
+                                <form action="{{ route('component.city.destroy', $data) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
