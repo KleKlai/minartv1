@@ -44,17 +44,6 @@ Route::prefix('Components')->name('component.')->middleware('can:administrator')
 
 });
 
-Route::get('notify', function() {
-    $user = \App\User::find(1);
-
-    $details = [
-        'header' => Auth::user()->name,
-        'body' => 'test notification',
-    ];
-
-    $user->notify(new \App\Notifications\notify($details));
-});
-
 Route::get('/clear', function(){
 
 	auth()->user()->unreadNotifications->markAsRead();
@@ -63,10 +52,15 @@ Route::get('/clear', function(){
 
 })->name('markAllAsRead');
 
-Route::get('/markAsRead/{id}', function($id){
+Route::get('/markAsRead/{notification}', function($id){
 
-	auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+    $notification = auth()->user()->notifications->where('id', $id)->first();
 
-	return redirect()->back();
+    if ($notification->read_at == '') {
+        $notification->markAsRead();
+        return redirect()->route('artwork.show', $notification->data['subject']);
+    }
+
+    return redirect()->route('artwork.show', $notification->data['subject']);
 
 })->name('markRead');

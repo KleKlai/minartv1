@@ -83,16 +83,14 @@
             @endif
 
             @forelse($data as $notification)
-                <a class="nav-link" href="{{ route('artwork.show', $notification->data['subject']) }}">
+                <a class="nav-link" href="{{ route('markRead', $notification->id) }}">
                     <div class="card">
                         <div class="card-body">
                             {{ $notification->data['data'] }}
                         </div>
                             <div class="card-footer">
                                 @if($notification->read_at == '')
-                                    <a href="{{ route('markRead', $notification->id) }}">
-                                        <span class="badge badge-primary">New</span>
-                                    </a>
+                                    <span class="badge badge-primary">New</span>
                                 @endif
                                 {{ $notification->data['title'] }} - {{ $notification->created_at->diffForHumans() }}
                             </div>
