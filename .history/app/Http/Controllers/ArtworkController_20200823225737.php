@@ -18,11 +18,6 @@ use App\Model\Size;
 class ArtworkController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {

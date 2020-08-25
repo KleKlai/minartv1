@@ -73,7 +73,7 @@
     <div class="row">
         <div class="col">
                 
-            <div id="columns">
+        <div id="columns">
                 @forelse($data as $data)
                     <a href="{{ route('artwork.show', $data) }}">
                             <figure>
@@ -91,7 +91,9 @@
                         <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
                     </div>
                 @endforelse
-            </div>
+
+        
+        </div>
 
 
         </div>

@@ -66,3 +66,7 @@ Route::get('/markAsRead/{id}', function($id){
 	return redirect()->back();
 
 })->name('markRead');
+
+Route::get('/notif', function() {
+    auth()->user()->unreadNotifications()->count();
+});

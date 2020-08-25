@@ -13,14 +13,15 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('view.notification') }}">
-                    Notifications<span class="badge badge-light">{{ auth()->user()->unreadNotifications()->count()  }}</span>
+                    <!-- Notifications<span class="badge badge-light"></span> -->
+                    Notifications <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
                 </a>
             </li>
             @can('administrator')
@@ -68,34 +69,42 @@
 @endsection
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col">
-                
-            <div id="columns">
-                @forelse($data as $data)
-                    <a href="{{ route('artwork.show', $data) }}">
-                            <figure>
-                                <img src="{{ url('storage/artwork/'.$data->attachment) }}" alt="{{ $data->name }}">
-                                <figcaption>{{ $data->name }}, {{ $data->category }}, ₱{{ $data->price }}</figcaption>
-                            </figure>
-                    </a>
-                @empty
-                    <div class="container text-center text-muted">
-                        <h1>Whoops!</h1>
-                        <h3>Looks like your gallery is empty?</h3>
-                        @can('artist')
-                        <a href="{{ route('artwork.create') }}"><p>Would you like to add one?</p></a>
-                        @endcan
-                        <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
-                    </div>
-                @endforelse
-            </div>
 
+        
+
+            @if(auth()->user()->unreadNotifications->count() != 0)
+                <a class="btn btn-link ml-1" href="{{ route('markAllAsRead') }}">
+                    Mark all as read
+                </a>
+            @endif
+
+            @forelse($data as $notification)
+                <a class="nav-link" href="{{ route('artwork.show', $notification->data['subject']) }}">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ $notification->data['data'] }}
+                        </div>
+                            <div class="card-footer">
+                                @if($notification->read_at == '')
+                                    <a href="{{ route('markRead', $notification->id) }}">
+                                        <span class="badge badge-primary">New</span>
+                                    </a>
+                                @endif
+                                {{ $notification->data['title'] }} - {{ $notification->created_at->diffForHumans() }}
+                            </div>
+                    </div>
+                </a>
+            @empty
+                <div class="container text-center text-muted">
+                    <h3>No notifications for now</h3>
+                    <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
+                </div>
+            @endforelse
 
         </div>
     </div>
 </div>
-
 @endsection

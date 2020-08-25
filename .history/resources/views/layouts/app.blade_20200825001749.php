@@ -37,6 +37,8 @@
     rel="stylesheet"
     />
 
+    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
     <style>
@@ -247,8 +249,7 @@
                         <div class="col">
 
                             @Auth
-                                @yield('nav')
-                                <!-- <nav class="navbar navbar-expand-lg navbar-light">
+                                <nav class="navbar navbar-expand-lg navbar-light">
                                     <span class="navbar-brand mb-0 h1">Artworks</span>
 
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -310,7 +311,7 @@
                                         </ul>
 
                                     </div>
-                                </nav> -->
+                                </nav>
                             @endAuth
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

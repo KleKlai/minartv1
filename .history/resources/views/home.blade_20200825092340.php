@@ -72,15 +72,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
-                
-            <div id="columns">
+
                 @forelse($data as $data)
-                    <a href="{{ route('artwork.show', $data) }}">
-                            <figure>
-                                <img src="{{ url('storage/artwork/'.$data->attachment) }}" alt="{{ $data->name }}">
-                                <figcaption>{{ $data->name }}, {{ $data->category }}, ₱{{ $data->price }}</figcaption>
-                            </figure>
-                    </a>
+                    <div id="columns">
+                        <figure>
+                            <img src="{{ url('storage/artwork/'.$data->attachment) }}" alt="{{ $data->name }}">
+                            <figcaption>{{ $data->name }}, {{ $data->category }}, ₱{{ $data->price }}</figcaption>
+                        </figure>
+                    </div>
                 @empty
                     <div class="container text-center text-muted">
                         <h1>Whoops!</h1>
@@ -91,7 +90,6 @@
                         <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
                     </div>
                 @endforelse
-            </div>
 
 
         </div>
