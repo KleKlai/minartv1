@@ -30,7 +30,7 @@ class HomeController extends Controller
         if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
             $data = Artwork::all();
         } else {
-            $data = Artwork::where('artist', Auth::user()->id)->get();
+            $data = Artwork::where('user_id', Auth::user()->id)->get();
         }
 
         // $data = [];

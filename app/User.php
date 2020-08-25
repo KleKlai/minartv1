@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Webpatser\Uuid\Uuid;
+use App\Artwork;
 
 class User extends Authenticatable
 {
@@ -82,7 +83,7 @@ class User extends Authenticatable
 
     public function artwork()
     {
-        return $this->belongsToMany('App\Artwork');
+        return $this->hasMany('App\Artwork');
     }
 
 }

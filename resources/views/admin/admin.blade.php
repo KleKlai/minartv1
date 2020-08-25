@@ -97,8 +97,11 @@
                                     @csrf
                                     @method('DELETE')  --}}
 
-                                    <a class="btn btn-info" href="{{ route('user.show', $user->uuid) }}" title="View Details" data-toggle="tooltip">View</a>
-
+                                    @if($user->deleted_at == null)
+                                        <a class="btn btn-info" href="{{ route('user.show', $user->uuid) }}" title="View Details" data-toggle="tooltip">View</a>
+                                    @else
+                                        <a class="btn btn-secondary" href="#restore" title="View Details" data-toggle="tooltip">Restore</a>
+                                    @endif
                                     {{--  <button type="submit" class="btn btn-link">Delete</button>
                                 </form>  --}}
                             </td>

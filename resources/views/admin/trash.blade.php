@@ -16,7 +16,7 @@
                 <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('artwork.index') }}">Artwork</a>
+                <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('view.notification') }}">
@@ -39,7 +39,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+                <a class="nav-link active" href="{{ route('user.index') }}">User Management</a>
             </li>
             @endcan
         </ul>
@@ -71,56 +71,44 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            @can('artist')
-            <a href="{{ route('artwork.create') }}" class="link mb-3">
-                +
-            </a>
-            @endcan
-            <a href="" class="link mb-3">Artworks</a>
 
-            <table class="table">
+            <p class="mb-0 "><b>Note: </b> {{ "All user's in this section will be deleted in 30 days"  }}</p>
+
+            <table class="table mt-2">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        {{-- <th scope="col">Description</th> --}}
-                        <!-- <th scope="col">Artist</th>
-                        <th scope="col">Country</th> -->
-                        <th scope="col">Category</th>
-                        <!-- <th scope="col">Size</th>
-                        <th scope="col">Dimension</th> -->
-                        <th scope="col">Subject</th>
-                        <!-- <th scope="col">Style</th>
-                        <th scope="col">Medium</th>
-                        <th scope="col">Material</th> -->
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                        <th scope="col"></th>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Group</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($data as $key => $user)
 
-                        @forelse($artwork as $data)
-                            <tr>
-                                <td>{{ $data->name }}</td>
-                                <td>{{ $data->category }}</td>
-                                <td>{{ $data->subject }}</td>
-                                <td>₱ {{ $data->price }}</td>
-                                <td>{{ $data->status }}</td>
-                                <td>
-                                    <a class="btn btn-info" href="{{ route('artwork.show', $data) }}">view</a>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="12" class="text-center">No Data</td>
-                            </tr>
-                        @endforelse
+                        <tr>
+                            <th scope="row">{{ $key+1 }}</th>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->mobile }}</td>
+                            <td>{{ $user->categories }}</td>
+                            <td>
+                                <form action="{{ route('user.restore', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+
+                                    <button type="submit" class="btn btn-secondary" title="View Details" data-toggle="tooltip">Restore</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    @endforeach
                 </tbody>
-            </table>
-
+                </table>
 
         </div>
     </div>
 </div>
-
 @endsection

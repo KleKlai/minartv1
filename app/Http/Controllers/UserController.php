@@ -56,7 +56,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.view', compact('user'));
+        $user       = User::find($user->id);
+        $artwork    = $user->artwork()->get();
+
+        return view('admin.view', compact('user', 'artwork'));
     }
 
     /**
@@ -126,6 +129,29 @@ class UserController extends Controller
 
         \Session::flash('success', 'Password Change Successfully!');
 
+        return redirect()->back();
+    }
+
+    public function trash()
+    {
+        $data = User::onlyTrashed()->get();
+
+        return view('admin.trash', compact('data'));
+    }
+
+    public function restore($id)
+    {
+        $data = User::onlyTrashed()->find($id);
+
+        if (!is_null($data)) {
+
+            $data->restore();
+
+            \Session::flash('success', $data->name . ' successfully restored.');
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
         return redirect()->back();
     }
 }

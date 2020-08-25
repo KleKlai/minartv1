@@ -69,6 +69,50 @@
                 </div>
             </div>
 
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                {{-- <th scope="col">Description</th> --}}
+                                <!-- <th scope="col">Artist</th>
+                                <th scope="col">Country</th> -->
+                                <th scope="col">Category</th>
+                                <!-- <th scope="col">Size</th>
+                                <th scope="col">Dimension</th> -->
+                                <th scope="col">Subject</th>
+                                <!-- <th scope="col">Style</th>
+                                <th scope="col">Medium</th>
+                                <th scope="col">Material</th> -->
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                @forelse($artwork as $data)
+                                    <tr>
+                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->category }}</td>
+                                        <td>{{ $data->subject }}</td>
+                                        <td>₱ {{ $data->price }}</td>
+                                        <td>{{ $data->status }}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{ route('artwork.show', $data) }}">view</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="12" class="text-center">No Data</td>
+                                    </tr>
+                                @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
