@@ -45,7 +45,7 @@
                         </div>
                     @endif
 
-                    <button class="mt-4" type="submit">{{ __('SUBMIT >>>') }}
+                    <button type="submit">{{ __('SUBMIT >>>') }}
                     </button>
 
                     

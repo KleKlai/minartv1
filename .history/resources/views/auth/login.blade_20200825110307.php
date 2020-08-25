@@ -36,16 +36,13 @@
                                 </span>
                             @enderror
                     </div>
-                    
                     @if (Route::has('password.request'))
-                        <div>
-                            <a href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        </div>
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
                     @endif
 
-                    <button class="mt-4" type="submit">{{ __('SUBMIT >>>') }}
+                    <button type="submit">{{ __('SUBMIT >>>') }}
                     </button>
 
                     
