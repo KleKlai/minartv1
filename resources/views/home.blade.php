@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.city.index') }}">Country</a>
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -38,8 +38,14 @@
                     <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userManagementDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User Management
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userManagementDropDown">
+                    <a class="dropdown-item" href="{{ route('user.index') }}">{{ "User's" }}</a>
+                    <a class="dropdown-item" href="{{ route('users.trash') }}">Trash</a>
+                </div>
             </li>
             @endcan
         </ul>

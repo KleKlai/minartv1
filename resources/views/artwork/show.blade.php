@@ -96,7 +96,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                              <label class="text-muted"for="name">Artist:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->artist }}" readonly>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->user->name }}" readonly>
                         </div>
                         <div class="form-group col-md-8">
                              <label class="text-muted"for="name">Name:</label>

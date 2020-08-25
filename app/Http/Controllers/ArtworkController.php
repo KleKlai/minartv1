@@ -28,7 +28,7 @@ class ArtworkController extends Controller
         if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
             $artwork = Artwork::all();
         } else {
-            $artwork = Artwork::where('artist', Auth::user()->id)->get();
+            $artwork = Artwork::where('user_id', Auth::user()->id)->get();
         }
 
         return view('artwork.index', compact('artwork'));
@@ -97,7 +97,7 @@ class ArtworkController extends Controller
         $request->merge(['attachment' => $file_name]);
 
         //Add Artist Request
-        $request->request->add(['artist' => \Auth::user()->id]);
+        $request->request->add(['user_id' => \Auth::user()->id]);
         $request->request->add(['status' => 'Pending']);
 
         //Remove file $request

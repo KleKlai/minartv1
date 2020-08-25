@@ -15,10 +15,10 @@ class CreateArtworksTable extends Migration
     {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->uuid('uuid');
             $table->string('name');
-            $table->unsignedBigInteger('artist');
-            $table->foreign('artist')->references('id')->on('users')->onDelete('cascade');
             $table->string('subject');
             $table->string('city');
             $table->string('category');

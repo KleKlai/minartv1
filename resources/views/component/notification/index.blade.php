@@ -23,7 +23,7 @@
                     Notifications
                     @if(auth()->user()->unreadNotifications->count() != 0)
                         <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
-                    @endif    
+                    @endif
                 </a>
             </li>
             @can('administrator')
@@ -33,7 +33,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.country.index') }}">Country</a>
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -75,7 +75,7 @@
     <div class="row">
         <div class="col">
 
-        
+
 
             @if(auth()->user()->unreadNotifications->count() != 0)
                 <a class="btn btn-link ml-1" href="{{ route('markAllAsRead') }}">

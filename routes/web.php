@@ -21,7 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController')->middleware('can:administrator');
-Route::post('password', 'UserController@changePassword')->name('change.password');
+Route::get('users/trash', 'UserController@trash')->name('users.trash');
+Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
+
+Route::post('password', 'UserController@changePassword')->name('change.password')->middleware('password.confirm');
 
 Route::resource('artwork', 'ArtworkController');
 Route::get('notification', 'NotificationController@index')->name('view.notification');
