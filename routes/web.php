@@ -54,6 +54,8 @@ Route::get('/clear', function(){
 
 Route::get('/markAsRead/{notification}', function($id){
 
+    // $notification = auth()->user()->unreadNotifications->where('id',$id)->first();
+
     $notification = auth()->user()->notifications->where('id', $id)->first();
 
     if ($notification->read_at == '') {
@@ -64,3 +66,11 @@ Route::get('/markAsRead/{notification}', function($id){
     return redirect()->route('artwork.show', $notification->data['subject']);
 
 })->name('markRead');
+
+Route::get('/markNotifRead/{id}', function($id){
+
+    $notification = auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+
+    return redirect()->back();
+
+})->name('single.markRead');

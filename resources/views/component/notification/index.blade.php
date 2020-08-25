@@ -90,7 +90,9 @@
                         </div>
                             <div class="card-footer">
                                 @if($notification->read_at == '')
+                                <a href="{{ route('single.markRead', $notification->id) }}">
                                     <span class="badge badge-primary">New</span>
+                                </a>
                                 @endif
                                 {{ $notification->data['title'] }} - {{ $notification->created_at->diffForHumans() }}
                             </div>
