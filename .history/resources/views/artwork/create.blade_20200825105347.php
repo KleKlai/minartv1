@@ -92,14 +92,14 @@
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="city">City</label>
+                    <label for="country">Country</label>
                     <!-- <select name="country" class="form-control" value="{{ old('country') }}" required>
                         <option value="">-</option>
                         @foreach($country as $country)
                             <option value="{{ $country->name }}">{{ $country->name }}</option>
                         @endforeach
                     </select> -->
-                    <input type="text" class="form-control" value="{{ old('city') }}" name="city" required>
+                    <input type="text" class="form-control" value="{{ old('name') }}" name="country" required>
                 </div>
 
 
