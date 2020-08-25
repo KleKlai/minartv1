@@ -76,8 +76,8 @@
             <form action="{{ route('artwork.destroy', $artwork) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
                 @can('administrator')
+                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
                     <a href="javascript:void()" class="btn btn-warning" data-toggle="modal" data-target="#categoryModal">
                         Update Status
                     </a>
@@ -95,8 +95,10 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                             <label class="text-muted"for="name">Artist:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->user->name }}" readonly>
+                            <label class="text-muted"for="name">Artist:</label>
+                            <a href="{{ route('user.show', $artwork->user) }}">
+                                <input type="text" class="form-control-plaintext" value="{{ $artwork->user->name }}" readonly>
+                            </a>
                         </div>
                         <div class="form-group col-md-8">
                              <label class="text-muted"for="name">Name:</label>
