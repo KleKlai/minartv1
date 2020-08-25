@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('nav')
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <span class="navbar-brand mb-0 h1">Artworks</span>
 
@@ -19,10 +20,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('view.notification') }}">
-                    Notifications
-                    @if(auth()->user()->unreadNotifications->count() != 0)
-                        <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
-                    @endif
+                    Notifications<span class="badge badge-light">{{ auth()->user()->unreadNotifications()->count()  }}</span>
                 </a>
             </li>
             @can('administrator')
@@ -32,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <!-- <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a> -->
+                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -40,14 +38,8 @@
                     <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="userManagementDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    User Management
-                </a>
-                <div class="dropdown-menu" aria-labelledby="userManagementDropDown">
-                    <a class="dropdown-item" href="{{ route('user.index') }}">{{ "User's" }}</a>
-                    <a class="dropdown-item" href="{{ route('users.trash') }}">Trash</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('user.index') }}">User Management</a>
             </li>
             @endcan
         </ul>

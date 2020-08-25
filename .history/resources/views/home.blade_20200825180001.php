@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('nav')
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <span class="navbar-brand mb-0 h1">Artworks</span>
 
@@ -12,22 +13,19 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('view.notification') }}">
-                    Notifications
-                    @if(auth()->user()->unreadNotifications->count() != 0)
-                        <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
-                    @endif
+                    Notifications<span class="badge badge-light">{{ auth()->user()->unreadNotifications()->count()  }}</span>
                 </a>
             </li>
             @can('administrator')
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Utility
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -76,76 +74,34 @@
 @endsection
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col">
 
-            <a href="javascript:void()" class="link mb-3" data-toggle="modal" data-target="#categoryMedium">
-                + Medium
-            </a>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $key => $data)
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $data->name }}</td>
-                            <td>{{ $data->description }}</td>
-                            <td>
-                                <form action="{{ route('component.medium.destroy', $data) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            <!-- Modal -->
-            <div class="modal fade" id="categoryMedium" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                    <form method="POST" action="{{ route('component.medium.store') }}">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea class="form-control" name="description" name="description" rows="2"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-link text-decoration-none" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-
-                    </form>
-                </div>
+            <div id="columns">
+                @forelse($data as $data)
+                    <a href="{{ route('artwork.show', $data) }}">
+                            <figure>
+                                <img src="{{ url('storage/artwork/'.$data->attachment) }}" alt="{{ $data->name }}">
+                                <figcaption>{{ $data->name }}, {{ $data->category }}, ₱{{ $data->price }}</figcaption>
+                            </figure>
+                    </a>
+                @empty
+                    <div class="container text-center text-muted">
+                        <h1>Whoops!</h1>
+                        <h3>Looks like your gallery is empty?</h3>
+                        @can('artist')
+                        <a href="{{ route('artwork.create') }}"><p>Would you like to add one?</p></a>
+                        @endcan
+                        <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
+                    </div>
+                @endforelse
             </div>
-            </div>
+
 
         </div>
     </div>
 </div>
+
 @endsection

@@ -327,13 +327,17 @@
                 y.classList.add('d-none');
             }
         }
+
+        
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
     <!-- MDB -->
     <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js"
     ></script>
-
 
 
 </body>
