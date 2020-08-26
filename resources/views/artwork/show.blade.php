@@ -81,7 +81,7 @@
                     <a href="javascript:void()" class="btn btn-warning m-1" data-toggle="modal" data-target="#categoryModal">
                         Update Status
                     </a>
-                    <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary m-1">
+                    <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary m-1" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
                         Edit
                     </a>
                 @endcan
