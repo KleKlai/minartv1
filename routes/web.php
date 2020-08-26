@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Auth::routes(['verify' => true]);
+// For Email Verification
+// Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController')->middleware('can:administrator');
@@ -28,7 +29,6 @@ Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore'
 Route::post('password', 'UserController@changePassword')->name('change.password')->middleware('password.confirm');
 
 Route::resource('artwork', 'ArtworkController');
-Route::get('notification', 'NotificationController@index')->name('view.notification');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
 // TODO: Components route start here
@@ -44,6 +44,7 @@ Route::prefix('Components')->name('component.')->middleware('can:administrator')
 
 });
 
+Route::get('notification', 'NotificationController@index')->name('view.notification');
 Route::get('/clear', function(){
 
 	auth()->user()->unreadNotifications->markAsRead();
