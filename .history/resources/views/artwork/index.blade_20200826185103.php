@@ -85,7 +85,7 @@
             </a>
             @endcan
 
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -112,7 +112,7 @@
                             <tr>
                                 <td>{{ $data->name }}</td>
                                 @can('administrator')
-                                <td>{{ $data->user->name }}</td>
+                                <td>{{ $data->artist }}</td>
                                 <td>{{ $data->category }}</td>
                                 <td>{{ $data->subject }}</td>
                                 <td>₱ {{ $data->price }}</td>

@@ -317,42 +317,14 @@
                 y.classList.add('d-none');
             }
         }
-
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#imageView')
-                        .attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // $('button[name="remove_levels"]').on('click', function(e) {
-        //     console.log("Button Clicked!!!")
-        //     var $form = $(this).closest('form');
-        //     e.preventDefault();
-        //     $('#confirm').modal({
-        //         backdrop: 'static',
-        //         keyboard: false
-        //     })
-        //     .on('click', '#delete', function(e) {
-        //         $form.trigger('submit');
-        //         });
-        //     $("#cancel").on('click',function(e){
-        //         e.preventDefault();
-        //         $('#confirm').modal.model('hide');
-        //     });
-        // });
     </script>
     <!-- MDB -->
     <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js"
     ></script>
+
+
 
 </body>
 </html>

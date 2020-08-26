@@ -85,22 +85,10 @@
                 @csrf
                 @method('DELETE')
                 @can('administrator')
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    <a href="javascript:void()" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#categoryModal">Update Status</a>
-
-                    <!-- <form action="#" method="POST">
-                        <button class='btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete"><span class="fa fa-times"></span> delete</button>
-                    </form>
-
-                    <div id="confirm" class="modal">
-                        <div class="modal-body">
-                            Are you sure?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
-                            <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-                        </div>
-                    </div> -->
+                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                    <a href="javascript:void()" class="btn btn-warning" data-toggle="modal" data-target="#categoryModal">
+                        Update Status
+                    </a>
                 @endcan
                 <a class="btn btn-light btn-sm" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
@@ -117,7 +105,7 @@
                         @can('administrator')
                         <div class="form-group col-md-4">
                             <label class="text-muted"for="name">Artist:</label>
-                            <a href="{{ route('user.show', $artwork->user) }}">
+                            <a class="btn btn-link" href="{{ route('user.show', $artwork->user) }}">
                                 <input type="text" class="form-control-plaintext" value="{{ $artwork->user->name }}" readonly>
                             </a>
                         </div>

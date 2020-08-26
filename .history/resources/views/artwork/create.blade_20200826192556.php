@@ -191,23 +191,22 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="attachment">Upload product photo</label>
                         <div class="custom-file">
                             <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}" required>
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
-
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/artwork" class="btn border-none">Cancel</a>
-                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
+                    <div class="col-md-8">
+                        <img id="imageView" src="" style="max-width:200px;"/>
                     </div>
                 
                 </div>
+
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/artwork" class="btn border-none">Cancel</a>
             </form>
 
         </div>

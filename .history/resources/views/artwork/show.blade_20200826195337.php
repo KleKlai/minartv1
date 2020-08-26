@@ -88,7 +88,7 @@
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     <a href="javascript:void()" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#categoryModal">Update Status</a>
 
-                    <!-- <form action="#" method="POST">
+                    <form action="#" method="POST">
                         <button class='btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete"><span class="fa fa-times"></span> delete</button>
                     </form>
 
@@ -100,7 +100,7 @@
                             <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
                             <button type="button" data-dismiss="modal" class="btn">Cancel</button>
                         </div>
-                    </div> -->
+                    </div>
                 @endcan
                 <a class="btn btn-light btn-sm" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
@@ -252,4 +252,24 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $('button[name="remove_levels"]').on('click', function(e) {
+            console.log("Button Clicked!!!")
+            var $form = $(this).closest('form');
+            e.preventDefault();
+            $('#confirm').modal({
+                backdrop: 'static',
+                keyboard: false
+            })
+            .on('click', '#delete', function(e) {
+                $form.trigger('submit');
+                });
+            $("#cancel").on('click',function(e){
+                e.preventDefault();
+                $('#confirm').modal.model('hide');
+            });
+        });
+</script>
 @endsection

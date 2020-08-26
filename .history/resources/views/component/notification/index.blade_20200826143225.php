@@ -15,9 +15,9 @@
                 <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('artwork.index') }}">Artwork</a>
+                <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('view.notification') }}">
                     Notifications
                     @if(auth()->user()->unreadNotifications->count() != 0)
@@ -55,7 +55,6 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -79,59 +78,43 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            @can('artist')
-            <a href="{{ route('artwork.create') }}" class="link mb-3">
-                + Artworks
-            </a>
-            @endcan
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <!-- <th scope="col">Description</th> -->
-                        @can('administrator')
-                        <th scope="col">Artist</th>
-                        <!-- <th scope="col">Country</th> -->
-                        <th scope="col">Category</th>
-                        <!-- <th scope="col">Size</th>
-                        <th scope="col">Dimension</th> -->
-                        <th scope="col">Subject</th>
-                        <!-- <th scope="col">Style</th>
-                        <th scope="col">Medium</th>
-                        <th scope="col">Material</th> -->
-                        <th scope="col">Price</th>
-                        @endcan
-                        <th scope="col">Status</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
+            @if(auth()->user()->unreadNotifications->count() != 0)
+                <a class="btn btn-link ml-1" href="{{ route('markAllAsRead') }}">
+                    Mark all as read
+                </a>
+            @endif
 
-                        @forelse($artwork as $data)
-                            <tr>
-                                <td>{{ $data->name }}</td>
-                                @can('administrator')
-                                <td>{{ $data->user->name }}</td>
-                                <td>{{ $data->category }}</td>
-                                <td>{{ $data->subject }}</td>
-                                <td>₱ {{ $data->price }}</td>
-                                @endcan
-                                <td>{{ $data->status }}</td>
-                                <td>
-                                    <a class="btn btn-info" href="{{ route('artwork.show', $data) }}">view</a>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="12" class="text-center">No Data</td>
-                            </tr>
-                        @endforelse
-                </tbody>
-            </table>
+            @forelse($data as $notification)
+                <a class="nav-link" href="{{ route('markRead', $notification->id) }}">
+                    <div class="card">
+                        <div class="card-body">
+                            @if($notification->read_at == '')
+                            <a href="{{ route('single.markRead', $notification->id) }}">
+                                <span class="badge badge-primary">New</span>
+                            </a>
+                            @endif
+                            {{ $notification->data['data'] }}
+                            <span class="text-muted">- {{ $notification->created_at->diffForHumans() }}</span>
+                        </div>
+                        <!-- <div class="card-footer">
+                            @if($notification->read_at == '')
+                            <a href="{{ route('single.markRead', $notification->id) }}">
+                                <span class="badge badge-primary">New</span>
+                            </a>
+                            @endif
+                            {{ $notification->data['title'] }} - {{ $notification->created_at->diffForHumans() }}
+                        </div> -->
+                    </div>
+                </a>
+            @empty
+                <div class="container text-center text-muted">
+                    <h3>No notifications for now</h3>
+                    <img src="{{ asset('images/assets/rsz_gallery_empty.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
+                </div>
+            @endforelse
 
         </div>
     </div>
 </div>
-
 @endsection

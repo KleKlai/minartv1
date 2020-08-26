@@ -85,14 +85,13 @@
             </a>
             @endcan
 
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <!-- <th scope="col">Description</th> -->
-                        @can('administrator')
-                        <th scope="col">Artist</th>
-                        <!-- <th scope="col">Country</th> -->
+                        {{-- <th scope="col">Description</th> --}}
+                        <!-- <th scope="col">Artist</th>
+                        <th scope="col">Country</th> -->
                         <th scope="col">Category</th>
                         <!-- <th scope="col">Size</th>
                         <th scope="col">Dimension</th> -->
@@ -101,7 +100,6 @@
                         <th scope="col">Medium</th>
                         <th scope="col">Material</th> -->
                         <th scope="col">Price</th>
-                        @endcan
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
@@ -111,12 +109,9 @@
                         @forelse($artwork as $data)
                             <tr>
                                 <td>{{ $data->name }}</td>
-                                @can('administrator')
-                                <td>{{ $data->user->name }}</td>
                                 <td>{{ $data->category }}</td>
                                 <td>{{ $data->subject }}</td>
                                 <td>₱ {{ $data->price }}</td>
-                                @endcan
                                 <td>{{ $data->status }}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{ route('artwork.show', $data) }}">view</a>

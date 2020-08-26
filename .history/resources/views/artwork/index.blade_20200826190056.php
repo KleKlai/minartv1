@@ -85,7 +85,7 @@
             </a>
             @endcan
 
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
