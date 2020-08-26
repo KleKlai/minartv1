@@ -77,12 +77,15 @@
                 @csrf
                 @method('DELETE')
                 @can('administrator')
-                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
-                    <a href="javascript:void()" class="btn btn-warning" data-toggle="modal" data-target="#categoryModal">
+                    <button type="submit" class="btn btn-danger btn-xs m-1" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button>
+                    <a href="javascript:void()" class="btn btn-warning m-1" data-toggle="modal" data-target="#categoryModal">
                         Update Status
                     </a>
+                    <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary m-1">
+                        Edit
+                    </a>
                 @endcan
-                <a class="btn btn-light" href="{{ route('download.attachment', $artwork) }}">Download</a>
+                <a class="btn btn-light m-1" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
         </div>
         <div class="col">
@@ -187,7 +190,7 @@
                         </button>
                     </div>
 
-                        <form method="POST" action="{{ route('artwork.update', $artwork) }}">
+                        <form method="POST" action="{{ route('status.change', $artwork) }}">
                             @csrf
                             @method('PATCH')
 

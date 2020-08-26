@@ -138,7 +138,23 @@ class ArtworkController extends Controller
      */
     public function edit(artwork $artwork)
     {
-        dd($artwork);
+        $subject    = Subject::all();
+        $category   = Category::all();
+        $style      = Style::all();
+        $medium     = Medium::all();
+        $material   = Material::all();
+        $size       = Size::all();
+
+        return view('artwork.edit', compact(
+            'subject',
+            'category',
+            'style',
+            'medium',
+            'material',
+            'size',
+            'artwork'
+        ));
+
     }
 
     /**
@@ -150,14 +166,20 @@ class ArtworkController extends Controller
      */
     public function update(Request $request, artwork $artwork)
     {
-        //Check if the current login user has admin previlege
-        if(\Gate::denies('administrator')){
-            return back();
-        }
-
         $request->validate([
-            'status'        => 'required',
-            'remarks'   => 'nullable',
+            'name'          => ['required', 'string'],
+            'subject'       => ['required', 'string'],
+            'city'          => ['required', 'string'],
+            'category'      => ['required', 'string'],
+            'style'         => ['required', 'string'],
+            'medium'        => ['required', 'string'],
+            'material'      => ['required', 'string'],
+            'size'          => ['nullable', 'string'],
+            'height'        => ['required', 'integer', 'min:0'],
+            'width'         => ['required', 'integer', 'min:0'],
+            'depth'         => ['nullable', 'integer', 'min:0'],
+            'price'         => ['required', 'integer', 'min:0'],
+            'description'   => ['nullable', 'string'],
         ]);
 
         $artwork->update($request->all());
@@ -168,12 +190,14 @@ class ArtworkController extends Controller
         $details = [
             'header'    => Auth::user()->name,
             'subject'   => $artwork->uuid,
-            'body'      => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
+            'body'      => 'Your artwork ' . $artwork->name . ' has been modified.',
         ];
 
         $user->notify(new \App\Notifications\notify($details));
 
-        return back();
+        \Session::flash('success', 'Artwork has been edited successfully.');
+
+        return redirect()->route('artwork.show', $artwork);
     }
 
     /**
@@ -200,5 +224,33 @@ class ArtworkController extends Controller
             Session::flash('error', $artwork->name . ' could not be downloaded.');
             return back();
         }
+    }
+
+    public function changeStatus(Request $request, artwork $artwork)
+    {
+        //Check if the current login user has admin previlege
+        if(\Gate::denies('administrator')){
+            return back();
+        }
+
+        $request->validate([
+            'status'        => 'required',
+            'remarks'   => 'nullable',
+        ]);
+
+        $artwork->update($request->all());
+
+        //Notify Admin for submission
+        $user = \App\User::find($artwork->user_id);
+
+        $details = [
+            'header'    => Auth::user()->name,
+            'subject'   => $artwork->uuid,
+            'body'      => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
+        ];
+
+        $user->notify(new \App\Notifications\notify($details));
+
+        return back();
     }
 }

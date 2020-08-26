@@ -73,33 +73,29 @@
     <div class="row">
         <div class="col">
 
-            <form action="{{ route('artwork.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('artwork.update', $artwork)}}" method="POST">
                 @csrf
+                @method('PATCH')
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" value="{{ old('name') }}" name="name" required>
+                    <input type="text" class="form-control" value="{{ $artwork->name }}" name="name" required>
                 </div>
 
                 <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="subject">Subject</label>
-                    <select name="subject" class="form-control" value="{{ old('subject') }}" required>
+                    <select name="subject" class="form-control" required>
                         <option value="">-</option>
                         @foreach($subject as $subject)
-                            <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                            <option value="{{ $subject->name }}" {{ $artwork->subject == $subject->name ? 'selected' : '' }}>{{ $subject->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="city">City</label>
-                    <select name="city" class="form-control" value="{{ old('city') }}" required>
-                        <option value="">-</option>
-                        @foreach($city as $city)
-                            <option value="{{ $city->name }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" class="form-control" value="{{ $artwork->city }}" name="city" required>
                 </div>
 
                 <div class="form-group col-md-4">
@@ -107,7 +103,7 @@
                     <select name="category" class="form-control" value="{{ old('category') }}" required>
                         <option value="">-</option>
                         @foreach($category as $category)
-                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                            <option value="{{ $category->name }}" {{ $artwork->category == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -119,7 +115,7 @@
                         <select name="style" class="form-control" value="{{ old('style') }}" required>
                             <option value="">-</option>
                             @foreach($style as $style)
-                                <option value="{{ $style->name }}">{{ $style->name }}</option>
+                                <option value="{{ $style->name }}" {{ $artwork->style == $style->name ? 'selected' : '' }}>{{ $style->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -129,7 +125,7 @@
                         <select name="medium" class="form-control" value="{{ old('medium') }}" required>
                             <option value="">-</option>
                             @foreach($medium as $medium)
-                                <option value="{{ $medium->name }}">{{ $medium->name }}</option>
+                                <option value="{{ $medium->name }}" {{ $artwork->medium == $medium->name ? 'selected' : '' }}>{{ $medium->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -139,7 +135,7 @@
                         <select name="material" class="form-control" value="{{ old('material') }}" required>
                             <option value="">-</option>
                             @foreach($material as $material)
-                                <option value="{{ $material->name }}">{{ $material->name }}</option>
+                                <option value="{{ $material->name }}" {{ $artwork->material == $material->name ? 'selected' : '' }}>{{ $material->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -151,24 +147,24 @@
                         <select name="size" class="form-control" value="{{ old('size') }}">
                             <option value="">-</option>
                             @foreach($size as $size)
-                                <option value="{{ $size->name }}">{{ $size->name }}</option>
+                                <option value="{{ $size->name }}" {{ $artwork->size == $size->name ? 'selected' : '' }}>{{ $size->name }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="height">Height</label>
-                        <input type="number" class="form-control" name="height" placeholder="(in cm)" min="0" value="{{ old('height') }}" required>
+                        <input type="number" class="form-control" name="height" placeholder="(in cm)" min="0" value="{{ $artwork->height }}" required>
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="width">Width</label>
-                        <input type="number" class="form-control" name="width" placeholder="(in cm)" min="0" value="{{ old('width') }}" required>
+                        <input type="number" class="form-control" name="width" placeholder="(in cm)" min="0" value="{{ $artwork->width }}" required>
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="depth">Depth</label>
-                        <input type="number" class="form-control" name="depth" placeholder="(in cm)" min="0" value="{{ old('depth') }}">
+                        <input type="number" class="form-control" name="depth" placeholder="(in cm)" min="0" value="{{ $artwork->depth }}">
                     </div>
 
                     <div class="form-group col-md-3">
@@ -177,30 +173,15 @@
                             <div class="input-group-prepend">
                             <div class="input-group-text">₱</div>
                             </div>
-                            <input type="number" class="form-control" name="price" min="0" value="{{ old('price') }}" required>
+                            <input type="number" class="form-control" name="price" min="0" value="{{ $artwork->price }}" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" class="form-control" rows="5" required>{{ old('description') }}</textarea>
+                <textarea name="description" class="form-control" rows="5" required>{{ $artwork->description }}</textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="attachment">Upload product photo</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
-                        <label class="custom-file-label" for="attachment">Choose file</label>
-                    </div>
-                </div>
-
-                <!-- <form>
-                    <div class="form-group">
-                        <label for="attachment">Upload product photo</label>
-                        <input type="file" class="form-control-file" id="attachment" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
-                    </div>
-                </form> -->
 
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="/artwork" class="btn border-none">Cancel</a>
