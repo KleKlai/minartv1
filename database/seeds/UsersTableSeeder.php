@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'mobile'        =>  '09952247045',
             'categories'    =>  'N/A',
             'email'         =>  'admin@mindanaoart.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);
 
@@ -31,6 +33,7 @@ class UsersTableSeeder extends Seeder
             'mobile'        =>  '09952247045',
             'categories'    =>  'Art Spaces',
             'email'         =>  'maynard@mindanaoart.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);
 

@@ -20,7 +20,7 @@ class ArtworkController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     public function index()
@@ -163,7 +163,7 @@ class ArtworkController extends Controller
         $artwork->update($request->all());
 
         //Notify Admin for submission
-        $user = \App\User::find($artwork->artist);
+        $user = \App\User::find($artwork->user_id);
 
         $details = [
             'header'    => Auth::user()->name,

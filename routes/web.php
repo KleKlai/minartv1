@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController')->middleware('can:administrator');
@@ -43,17 +44,6 @@ Route::prefix('Components')->name('component.')->middleware('can:administrator')
 
 });
 
-Route::get('notify', function() {
-    $user = \App\User::find(1);
-
-    $details = [
-        'header' => Auth::user()->name,
-        'body' => 'test notification',
-    ];
-
-    $user->notify(new \App\Notifications\notify($details));
-});
-
 Route::get('/clear', function(){
 
 	auth()->user()->unreadNotifications->markAsRead();
@@ -62,10 +52,25 @@ Route::get('/clear', function(){
 
 })->name('markAllAsRead');
 
-Route::get('/markAsRead/{id}', function($id){
+Route::get('/markAsRead/{notification}', function($id){
 
-	auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+    // $notification = auth()->user()->unreadNotifications->where('id',$id)->first();
 
-	return redirect()->back();
+    $notification = auth()->user()->notifications->where('id', $id)->first();
+
+    if ($notification->read_at == '') {
+        $notification->markAsRead();
+        return redirect()->route('artwork.show', $notification->data['subject']);
+    }
+
+    return redirect()->route('artwork.show', $notification->data['subject']);
 
 })->name('markRead');
+
+Route::get('/markNotifRead/{id}', function($id){
+
+    $notification = auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+
+    return redirect()->back();
+
+})->name('single.markRead');

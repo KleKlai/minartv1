@@ -84,9 +84,15 @@
             <form action="{{ route('artwork.destroy', $artwork) }}" method="POST">
                 @csrf
                 @method('DELETE')
+<<<<<<< HEAD
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                @can('administrator')
+                    <a href="javascript:void()" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#categoryModal">
+=======
                 @can('administrator')
                     <button type="submit" class="btn btn-danger btn-xs">Delete</button>
                     <a href="javascript:void()" class="btn btn-warning" data-toggle="modal" data-target="#categoryModal">
+>>>>>>> master
                         Update Status
                     </a>
                 @endcan
