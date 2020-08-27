@@ -188,7 +188,7 @@
                 </div>
             </div>
 
-            <!-- Update Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -228,27 +228,17 @@
                 </div>
             </div>
 
-            <!-- Delete Modal -->
-            <div id="confirmDeleteModal" class="modal fade">
-                <div class="modal-dialog modal-confirm modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header flex-column">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <!-- <div class="icon-box">
-                                <i class="material-icons">&#xE5CD;</i>
-                            </div>						 -->
-                            <h4 class="modal-title w-100">Are you sure?</h4>	
-                        </div>
-                        <div class="modal-body">
-                            <p>Do you really want to delete these records? This process cannot be undone.</p>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                        </div>
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button>
+                        <button type="button" data-dismiss="modal" class="btn">Cancel</button>
                     </div>
                 </div>
-            </div>    
+            </div>
 
             @if (!empty($artwork->remarks))
                 <div class="card mt-2">

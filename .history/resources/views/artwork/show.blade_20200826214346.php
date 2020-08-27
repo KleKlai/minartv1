@@ -230,21 +230,21 @@
 
             <!-- Delete Modal -->
             <div id="confirmDeleteModal" class="modal fade">
-                <div class="modal-dialog modal-confirm modal-dialog-centered">
+                <div class="modal-dialog modal-confirm">
                     <div class="modal-content">
                         <div class="modal-header flex-column">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <!-- <div class="icon-box">
+                            <div class="icon-box">
                                 <i class="material-icons">&#xE5CD;</i>
-                            </div>						 -->
+                            </div>						
                             <h4 class="modal-title w-100">Are you sure?</h4>	
                         </div>
                         <div class="modal-body">
                             <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button>
                         </div>
                     </div>
                 </div>

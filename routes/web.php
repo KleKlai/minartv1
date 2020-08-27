@@ -29,6 +29,7 @@ Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore'
 Route::post('password', 'UserController@changePassword')->name('change.password')->middleware('password.confirm');
 
 Route::resource('artwork', 'ArtworkController');
+Route::patch('artwork/status/{artwork}', 'ArtworkController@changeStatus')->name('status.change');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
 // TODO: Components route start here

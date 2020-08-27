@@ -142,7 +142,7 @@
 
             <!-- Delete Modal -->
             <div id="confirmDeleteModal" class="modal fade">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-confirm modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header flex-column">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -153,12 +153,12 @@
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <!-- <a class="btn btn-danger" href="{{ route('user.destroy', $user) }}" data-dismiss="modal">Delete</a> -->
-                            <form action="{{ route('user.destroy', $user) }}" method="POST">
+                            <a class="btn btn-danger" href="{{ route('user.destroy', $user) }}" data-dismiss="modal"></a>
+                            <!-- <form action="{{ route('user.destroy', $user) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>

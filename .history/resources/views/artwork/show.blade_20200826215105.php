@@ -244,7 +244,7 @@
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                            <button type="submit" class="btn btn-danger" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button>
                         </div>
                     </div>
                 </div>

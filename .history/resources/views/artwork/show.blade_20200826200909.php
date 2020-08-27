@@ -85,14 +85,27 @@
                 @csrf
                 @method('DELETE')
                 @can('administrator')
-                    <!-- <button type="submit" class="btn btn-danger btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button> -->
-                    <a href="" class="btn btn-danger btn-sm mb-2"  data-toggle="modal" data-target="#confirmDeleteModal" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</a>
-                    <a href="javascript:void()" class="btn btn-warning btn-sm mb-2" data-toggle="modal" data-target="#categoryModal">Update Status</a>
+                    <button type="submit" class="btn btn-danger btn-sm pb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button>
+                    <a href="javascript:void()" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#categoryModal">Update Status</a>
+
+                    <!-- <form action="#" method="POST">
+                        <button class='btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete"><span class="fa fa-times"></span> delete</button>
+                    </form>
+
+                    <div id="confirm" class="modal">
+                        <div class="modal-body">
+                            Are you sure?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+                            <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                        </div>
+                    </div> -->
                 @endcan
-                <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
+                <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
                     Edit
                 </a>
-                <a class="btn btn-light btn-sm mb-2" href="{{ route('download.attachment', $artwork) }}">Download</a>
+                <a class="btn btn-light btn-sm" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
         </div>
         <div class="col">
@@ -188,16 +201,16 @@
                 </div>
             </div>
 
-            <!-- Update Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
                         <form method="POST" action="{{ route('status.change', $artwork) }}">
                             @csrf
@@ -227,28 +240,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Delete Modal -->
-            <div id="confirmDeleteModal" class="modal fade">
-                <div class="modal-dialog modal-confirm modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header flex-column">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <!-- <div class="icon-box">
-                                <i class="material-icons">&#xE5CD;</i>
-                            </div>						 -->
-                            <h4 class="modal-title w-100">Are you sure?</h4>	
-                        </div>
-                        <div class="modal-body">
-                            <p>Do you really want to delete these records? This process cannot be undone.</p>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>    
 
             @if (!empty($artwork->remarks))
                 <div class="card mt-2">
