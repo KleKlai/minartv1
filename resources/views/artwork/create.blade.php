@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('nav')
-
 <nav class="navbar navbar-expand-lg navbar-light">
     <span class="navbar-brand mb-0 h1">Artworks</span>
 
@@ -20,7 +19,10 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('view.notification') }}">
-                    Notifications<span class="badge badge-light">{{ auth()->user()->unreadNotifications()->count()  }}</span>
+                    Notifications
+                    @if(auth()->user()->unreadNotifications->count() != 0)
+                        <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
+                    @endif
                 </a>
             </li>
             @can('administrator')
@@ -30,7 +32,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a>
+                    <!-- <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a> -->
                     <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
                     <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
                     <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
@@ -38,8 +40,14 @@
                     <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.index') }}">User Management</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userManagementDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User Management
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userManagementDropDown">
+                    <a class="dropdown-item" href="{{ route('user.index') }}">{{ "User's" }}</a>
+                    <a class="dropdown-item" href="{{ route('users.trash') }}">Trash</a>
+                </div>
             </li>
             @endcan
         </ul>
@@ -94,13 +102,9 @@
 
                 <div class="form-group col-md-4">
                     <label for="city">City</label>
-                    <select name="city" class="form-control" value="{{ old('city') }}" required>
-                        <option value="">-</option>
-                        @foreach($city as $city)
-                            <option value="{{ $city->name }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" class="form-control" value="{{ old('city') }}" name="city" required>
                 </div>
+
 
                 <div class="form-group col-md-4">
                     <label for="category">Category</label>
@@ -187,23 +191,24 @@
                 <textarea name="description" class="form-control" rows="5" required>{{ old('description') }}</textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="attachment">Upload product photo</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
-                        <label class="custom-file-label" for="attachment">Choose file</label>
-                    </div>
-                </div>
-
-                <!-- <form>
-                    <div class="form-group">
+                <div class="row">
+                    <div class="form-group col-md-6">
                         <label for="attachment">Upload product photo</label>
-                        <input type="file" class="form-control-file" id="attachment" name="file" aria-describedby="Product Image" value="{{ old('attachment') }}" required>
-                    </div>
-                </form> -->
+                        <div class="custom-file">
+                            <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}" required>
+                            <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
+                        </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="/artwork" class="btn border-none">Cancel</a>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="/artwork" class="btn border-none">Cancel</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
+                    </div>
+                
+                </div>
             </form>
 
         </div>
