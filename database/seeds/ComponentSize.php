@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\size as Size;
+use App\Model\Size;
 
 class ComponentSize extends Seeder
 {
