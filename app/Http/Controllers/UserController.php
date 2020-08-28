@@ -112,8 +112,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        dd($user);
         $user->delete();
+
+        \Session::flash('success', 'User has been moved to trash!');
+
         return redirect()->route('user.index');
     }
 

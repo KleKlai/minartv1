@@ -133,7 +133,7 @@
                         </div>
                     </div>
 
-                    
+
                     <a href="" class="btn btn-danger"  data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
                     <a class="btn btn-secondary" href="{{ route('user.edit', $user) }}">Edit</a>
 
@@ -146,18 +146,18 @@
                     <div class="modal-content">
                         <div class="modal-header flex-column">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title w-100">Are you sure?</h4>	
+                            <h4 class="modal-title w-100">Are you sure?</h4>
                         </div>
                         <div class="modal-body">
                             <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <!-- <a class="btn btn-danger" href="{{ route('user.destroy', $user) }}" data-dismiss="modal">Delete</a> -->
+
                             <form action="{{ route('user.destroy', $user) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                                <button type="submit" class="btn btn-danger" >Delete</button>
                             </form>
                         </div>
                     </div>

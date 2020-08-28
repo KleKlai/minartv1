@@ -234,21 +234,23 @@
                     <div class="modal-content">
                         <div class="modal-header flex-column">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <!-- <div class="icon-box">
-                                <i class="material-icons">&#xE5CD;</i>
-                            </div>						 -->
-                            <h4 class="modal-title w-100">Are you sure?</h4>	
+
+                            <h4 class="modal-title w-100">Are you sure?</h4>
                         </div>
                         <div class="modal-body">
                             <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                        </div>
+                        <form action="{{ route('artwork.destroy', $artwork) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>    
+            </div>
 
             @if (!empty($artwork->remarks))
                 <div class="card mt-2">
