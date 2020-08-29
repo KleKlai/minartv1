@@ -182,7 +182,7 @@
             "dayl . hourl . minutel . secondl";
     }
 
-    h1, h2 {
+    .h1 {
         font-weight: 300 !important;
     }
 

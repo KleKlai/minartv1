@@ -17,8 +17,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('view.notification') }}">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('view.notification') }}">
                     Notifications
                     @if(auth()->user()->unreadNotifications->count() != 0)
                         <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
@@ -98,7 +98,7 @@
                 </a>
             @empty
                 <div class="container text-center text-muted">
-                    <h3>No notifications for now.</h3>
+                    <h3>No notifications for now</h3>
                     <img src="{{ asset('images/assets/No_Notifications.png') }}" alt="No Result Found" width="300" class="mb-4 mx-auto d-block">
                 </div>
             @endforelse

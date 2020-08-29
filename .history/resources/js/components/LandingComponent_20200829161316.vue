@@ -182,10 +182,6 @@
             "dayl . hourl . minutel . secondl";
     }
 
-    h1, h2 {
-        font-weight: 300 !important;
-    }
-
     .day { grid-area: day; font-size: 50px;}
     .hour { grid-area: hour; font-size: 50px;}
     .minute { grid-area: minute; font-size: 50px;}

@@ -10,7 +10,7 @@
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h5>{{ "The following error(s) were found, please correct them and re-submit the form." }}</h5>
+        <h4>{{ "The following error(s) were found, please correct them and re-submit the form." }}</h4>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
