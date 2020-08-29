@@ -90,15 +90,14 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="subject">Subject</label>
-                        <select name="subject" class="form-control" value="{{ old('subject') }}" required>
-                            <option value="">-</option>
-                            @foreach($subject as $subject)
-                                <option value="{{ $subject->name }}">{{ $subject->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div class="form-group col-md-4">
+                    <label for="subject">Subject</label>
+                    <select name="subject" class="form-control" value="{{ old('subject') }}" required>
+                        <option value="">-</option>
+                        @foreach($subject as $subject)
+                            <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group col-md-4">
@@ -221,7 +220,7 @@
                     <div class="col-md-6">
                         <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
                     </div>
-
+                
                 </div>
             </form>
 

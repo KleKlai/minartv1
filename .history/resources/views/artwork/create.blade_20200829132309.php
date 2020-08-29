@@ -90,15 +90,14 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="subject">Subject</label>
-                        <select name="subject" class="form-control" value="{{ old('subject') }}" required>
-                            <option value="">-</option>
-                            @foreach($subject as $subject)
-                                <option value="{{ $subject->name }}">{{ $subject->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div class="form-group col-md-4">
+                    <label for="subject">Subject</label>
+                    <select name="subject" class="form-control" value="{{ old('subject') }}" required>
+                        <option value="">-</option>
+                        @foreach($subject as $subject)
+                            <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group col-md-4">
@@ -195,12 +194,12 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="attachment">Upload Artwork Photo</label>
-                        <div class="custom-file mb-3">
+                        <div class="custom-file">
                             <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}" required>
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
 
-                        <!-- <div>
+                        <div>
                             <ul class="list-unstyled">
                                 <li><h5>Guidelines must be follow:</h5>
                                     <ul>Guideline 1</ul>
@@ -211,7 +210,7 @@
                                     <ul>Guideline 6</ul>
                                 </li>
                             </ul>
-                        </div> -->
+                        </div>
 
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -221,7 +220,7 @@
                     <div class="col-md-6">
                         <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
                     </div>
-
+                
                 </div>
             </form>
 

@@ -98,19 +98,6 @@
                     @enderror
                 </div>
 
-                <div class="form-group row d-none" id="regionalGroup">
-                    <select name="regionalGroup" class="@error('regionalGroup') is-invalid @enderror">
-                        <option selected>Choose Regional Group...</option>
-                        <option value="Regional Group 1">Regional Group 1</option>
-                    </select>
-
-                    @error('regionalGroup')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
                 <div class="form-group row">
                         <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
 

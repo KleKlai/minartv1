@@ -17,8 +17,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('view.notification') }}">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('view.notification') }}">
                     Notifications
                     @if(auth()->user()->unreadNotifications->count() != 0)
                         <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>

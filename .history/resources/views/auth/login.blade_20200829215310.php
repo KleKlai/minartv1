@@ -27,7 +27,7 @@
                             @enderror
                     </div>
 
-                    <div class="row">
+                    <div class="form-group row">
                             <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
 
                             @error('password')
@@ -38,11 +38,9 @@
                     </div>
                     
                     @if (Route::has('password.request'))
-                        <div>
-                            <a href="{{ route('password.request') }}" style="font-size: 12px;">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        </div>
+                        <a href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
                     @endif
 
                     <button class="mt-4" type="submit">{{ __('SUBMIT >>>') }}
