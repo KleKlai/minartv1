@@ -21,18 +21,20 @@ Auth::routes();
 // For Email Verification
 // Auth::routes(['verify' => true]);
 
+// TODO: General Section ( For All User )
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('password', 'UserController@changePassword')->name('change.password');
+Route::resource('artwork', 'ArtworkController');
+Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
+Route::get('notification', 'NotificationController@index')->name('view.notification');
+
+
+// TODO: Restricted Area ( For Administrator )
 Route::resource('/user', 'UserController')->middleware('can:administrator');
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
-
-Route::post('password', 'UserController@changePassword')->name('change.password')->middleware('password.confirm');
-
-Route::resource('artwork', 'ArtworkController');
 Route::patch('artwork/status/{artwork}', 'ArtworkController@changeStatus')->name('status.change');
-Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
-// TODO: Components route start here
 Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
 
     Route::resource('subject', 'Component\SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
@@ -45,7 +47,6 @@ Route::prefix('Components')->name('component.')->middleware('can:administrator')
 
 });
 
-Route::get('notification', 'NotificationController@index')->name('view.notification');
 Route::get('/clear', function(){
 
 	auth()->user()->unreadNotifications->markAsRead();
@@ -54,20 +55,7 @@ Route::get('/clear', function(){
 
 })->name('markAllAsRead');
 
-Route::get('/markAsRead/{notification}', function($id){
-
-    // $notification = auth()->user()->unreadNotifications->where('id',$id)->first();
-
-    $notification = auth()->user()->notifications->where('id', $id)->first();
-
-    if ($notification->read_at == '') {
-        $notification->markAsRead();
-        return redirect()->route('artwork.show', $notification->data['subject']);
-    }
-
-    return redirect()->route('artwork.show', $notification->data['subject']);
-
-})->name('markRead');
+Route::get('/markAsRead/{notification}', 'NotificationController@markAsRead')->name('markRead');
 
 Route::get('/markNotifRead/{id}', function($id){
 

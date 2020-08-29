@@ -17,4 +17,16 @@ class NotificationController extends Controller
 
         return view('component.notification.index', compact('data'));
     }
+
+    public function markAsRead($id)
+    {
+        $notification = auth()->user()->notifications->where('id', $id)->first();
+
+        if ($notification->read_at == '') {
+            $notification->markAsRead();
+            return redirect()->route('artwork.show', $notification->data['subject']);
+        }
+
+        return redirect()->route('artwork.show', $notification->data['subject']);
+    }
 }

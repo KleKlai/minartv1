@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
 
         $Admin       = Role::where('name', 'Administrator')->first();
         $Artist      = Role::where('name', 'Artist')->first();
+        $Curator     = Role::where('name', 'Curator')->first();
 
         $Admin_user = User::create([
             'name'          =>  'System Adminstrator',
@@ -29,10 +30,19 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $Artist_user = User::create([
-            'name'          =>  'Maynard Magallen',
+            'name'          =>  'Artist',
             'mobile'        =>  '09952247045',
             'categories'    =>  'Art Spaces',
             'email'         =>  'maynard@mindanaoart.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password'      =>   Hash::make('bxtr1605'),
+        ]);
+
+        $Curator_user = User::create([
+            'name'          =>  'Curator',
+            'mobile'        =>  '09952247045',
+            'categories'    =>  'Art Spaces',
+            'email'         =>  'curator@mindanaoart.com',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);

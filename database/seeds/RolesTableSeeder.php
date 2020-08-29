@@ -21,6 +21,9 @@ class RolesTableSeeder extends Seeder
             [
             'name'  => 'Artist',
             ],
+            [
+            'name'  => 'Curator'
+            ]
         ];
 
         Role::insert($roles);
