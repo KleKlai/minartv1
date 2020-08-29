@@ -199,7 +199,7 @@
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
 
-                        <!-- <div>
+                        <div>
                             <ul class="list-unstyled">
                                 <li><h5>Guidelines must be follow:</h5>
                                     <ul>Guideline 1</ul>
@@ -210,7 +210,7 @@
                                     <ul>Guideline 6</ul>
                                 </li>
                             </ul>
-                        </div> -->
+                        </div>
 
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary">Save</button>

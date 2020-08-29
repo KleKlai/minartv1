@@ -119,7 +119,7 @@
     export default {
         data: function () {
             var now = new Date();
-            var newYear = new Date("2020-10-21");
+            var newYear = new Date("2020-10-30");
 
             return {
             counting: false,
@@ -180,10 +180,6 @@
         grid-template-areas: 
             "day column1 hour column2 minute column3 second"
             "dayl . hourl . minutel . secondl";
-    }
-
-    h1, h2 {
-        font-weight: 300 !important;
     }
 
     .day { grid-area: day; font-size: 50px;}

@@ -315,24 +315,15 @@
         function showOtherDropDown(){
             var x = document.getElementById("categories").value;
             if(x == "Gallery"){
-                document.getElementById("gallery").classList.remove('d-none');
-                document.getElementById("specialProjects").classList.add('d-none');
-                document.getElementById("regionalGroup").classList.add('d-none');
+                var y = document.getElementById("gallery");
+                y.classList.remove('d-none');
             }
             else if(x == "Special Projects"){
-                document.getElementById("specialProjects").classList.remove('d-none');
-                document.getElementById("gallery").classList.add('d-none');
-                document.getElementById("regionalGroup").classList.add('d-none');
-            }
-            else if(x == "Regional Group"){
-                document.getElementById("regionalGroup").classList.remove('d-none');
-                document.getElementById("gallery").classList.add('d-none');
-                document.getElementById("specialProjects").classList.add('d-none');
+                var y = document.getElementById("specialProjects");
+                y.classList.remove('d-none');
             }
             else {
                 document.getElementById("gallery").classList.add('d-none');
-                document.getElementById("specialProjects").classList.add('d-none');
-                document.getElementById("regionalGroup").classList.add('d-none');
             }
         }
 
