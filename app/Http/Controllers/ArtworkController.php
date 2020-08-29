@@ -210,11 +210,20 @@ class ArtworkController extends Controller
      */
     public function destroy(artwork $artwork)
     {
-        $artwork->delete();
 
-        \Session::flash('success', $artwork->name . ' deleted successfully!');
+        //Delete the file first
+        if(\Storage::exists('public/artwork/'.$artwork->attachment)){
+            \Storage::delete('public/artwork/'.$artwork->attachment);
 
-        return redirect()->route('artwork.index');
+            //Delete method
+            $artwork->delete();
+
+            \Session::flash('success', $artwork->name . ' deleted successfully!');
+
+            return redirect()->route('artwork.index');
+        }
+
+        return abort(404, 'Incomplete Action');
     }
 
     public function download(Artwork $artwork)
