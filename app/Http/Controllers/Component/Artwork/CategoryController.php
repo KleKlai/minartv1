@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
-use App\Model\Subject as Model;
+use App\Model\Category as Model;
 use Illuminate\Http\Request;
 
-class SubjectController extends Controller
+class CategoryController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -17,7 +16,7 @@ class SubjectController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.subject.index', compact('data'));
+        return view('component.artwork.category.index', compact('data'));
     }
 
     /**
@@ -38,7 +37,6 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name'          => ['required', 'string'],
             'description'   => ['nullable', 'string', 'max:255']
@@ -54,10 +52,10 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Subject  $subject
+     * @param  \App\Model\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show(Category $category)
     {
         //
     }
@@ -65,10 +63,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Subject  $subject
+     * @param  \App\Model\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit(Category $category)
     {
         //
     }
@@ -77,10 +75,10 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Subject  $subject
+     * @param  \App\Model\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -88,14 +86,14 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Subject  $subject
+     * @param  \App\Model\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $subject)
+    public function destroy(Model $category)
     {
-        $subject->delete();
+        $category->delete();
 
-        \Session::flash('success', $subject->name . ' has been remove successfully.');
+        \Session::flash('success', $category->name . ' has been remove successfully.');
 
         return back();
     }

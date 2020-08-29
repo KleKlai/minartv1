@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Artwork;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use App\Role;
 
 // Components
 use App\Model\Subject;
-use App\Model\City;
 use App\Model\Category;
 use App\Model\Style;
 use App\Model\Medium;
@@ -45,7 +46,6 @@ class ArtworkController extends Controller
         // TODO: Return here all necessary drop down DATA
 
         $subject    = Subject::all();
-        $city       = City::all();
         $category   = Category::all();
         $style      = Style::all();
         $medium     = Medium::all();
@@ -54,7 +54,6 @@ class ArtworkController extends Controller
 
         return view('artwork.create', compact(
             'subject',
-            'city',
             'category',
             'style',
             'medium',
@@ -105,7 +104,8 @@ class ArtworkController extends Controller
         $artwork = Artwork::create($request->except(['file']));
 
         //Notify Admin for submission
-        $user = \App\User::find(1);
+        // $user = \App\User::find(1);
+        $user = Role::where('name', 'Administrator')->first()->users()->get();
 
         $details = [
             'header'    => Auth::user()->name,
@@ -113,7 +113,8 @@ class ArtworkController extends Controller
             'body'      => Auth::user()->name . ' submitted art ' . $request->name,
         ];
 
-        $user->notify(new \App\Notifications\notify($details));
+        // $user->notify(new \App\Notifications\notify($details));
+        Notification::send($user, new \App\Notifications\notify($details));
 
         \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
 

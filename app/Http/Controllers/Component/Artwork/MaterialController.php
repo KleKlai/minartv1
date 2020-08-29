@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
-use App\Model\Category as Model;
+
+use App\Model\Material as Model;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class MaterialController extends Controller
 {
     public function __construct()
     {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.category.index', compact('data'));
+        return view('component.artwork.material.index', compact('data'));
     }
 
     /**
@@ -52,10 +53,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Category  $category
+     * @param  \App\Model\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Material $material)
     {
         //
     }
@@ -63,10 +64,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Category  $category
+     * @param  \App\Model\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Material $material)
     {
         //
     }
@@ -75,10 +76,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Category  $category
+     * @param  \App\Model\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Material $material)
     {
         //
     }
@@ -86,14 +87,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Category  $category
+     * @param  \App\Model\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $category)
+    public function destroy(Model $material)
     {
-        $category->delete();
+        $material->delete();
 
-        \Session::flash('success', $category->name . ' has been remove successfully.');
+        \Session::flash('success', $material->name . ' has been remove successfully.');
 
         return back();
     }

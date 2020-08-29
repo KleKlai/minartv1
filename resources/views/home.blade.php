@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
+
 @section('nav')
 <nav class="navbar navbar-expand-lg navbar-light">
     <span class="navbar-brand mb-0 h1">Artworks</span>
@@ -18,7 +20,7 @@
                 <a class="nav-link" href="{{ route('artwork.index') }}">Artwork</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view.notification') }}">
+                <a class="nav-link" href="{{ route('notification.view') }}">
                     Notifications
                     @if(auth()->user()->unreadNotifications->count() != 0)
                         <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>

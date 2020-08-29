@@ -26,8 +26,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('password', 'UserController@changePassword')->name('change.password');
 Route::resource('artwork', 'ArtworkController');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
-Route::get('notification', 'NotificationController@index')->name('view.notification');
 
+Route::prefix('notification')->name('notification.')->middleware('auth')->group(function() {
+
+    Route::get('/view', 'NotificationController@index')->name('view');
+    Route::get('/clear', 'NotificationController@markAllAsRead')->name('clear');
+    Route::get('/read/{notification}', 'NotificationController@markAsRead')->name('view.read');
+    Route::get('/single/read/{id}', 'NotificationController@singleMarkAsRead')->name('read');
+
+});
 
 // TODO: Restricted Area ( For Administrator )
 Route::resource('/user', 'UserController')->middleware('can:administrator');
@@ -35,32 +42,14 @@ Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
 Route::patch('artwork/status/{artwork}', 'ArtworkController@changeStatus')->name('status.change');
 
-Route::prefix('Components')->name('component.')->middleware('can:administrator')->group(function() {
+Route::namespace('Component')->prefix('Component')->name('component.')->middleware('can:administrator')->group(function() {
 
-    Route::resource('subject', 'Component\SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('city', 'Component\CityController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('category', 'Component\CategoryController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('style', 'Component\StyleController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('medium', 'Component\MediumController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('material', 'Component\materialController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('size', 'Component\sizeController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('subject', 'SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('city', 'CityController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('category', 'CategoryController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('style', 'StyleController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('medium', 'MediumController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('material', 'materialController', ['except' => 'create', 'show', 'edit', 'update']);
+    Route::resource('size', 'sizeController', ['except' => 'create', 'show', 'edit', 'update']);
 
 });
-
-Route::get('/clear', function(){
-
-	auth()->user()->unreadNotifications->markAsRead();
-
-	return redirect()->back();
-
-})->name('markAllAsRead');
-
-Route::get('/markAsRead/{notification}', 'NotificationController@markAsRead')->name('markRead');
-
-Route::get('/markNotifRead/{id}', function($id){
-
-    $notification = auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
-
-    return redirect()->back();
-
-})->name('single.markRead');

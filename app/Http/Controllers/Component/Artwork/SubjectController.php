@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
-
-use App\Model\size as Model;
+use App\Model\Subject as Model;
 use Illuminate\Http\Request;
 
-class SizeController extends Controller
+class SubjectController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -17,7 +17,7 @@ class SizeController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.size.index', compact('data'));
+        return view('component.artwork.subject.index', compact('data'));
     }
 
     /**
@@ -38,6 +38,7 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name'          => ['required', 'string'],
             'description'   => ['nullable', 'string', 'max:255']
@@ -53,10 +54,10 @@ class SizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\size  $size
+     * @param  \App\Model\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show(size $size)
+    public function show(Subject $subject)
     {
         //
     }
@@ -64,10 +65,10 @@ class SizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\size  $size
+     * @param  \App\Model\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(size $size)
+    public function edit(Subject $subject)
     {
         //
     }
@@ -76,10 +77,10 @@ class SizeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\size  $size
+     * @param  \App\Model\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, size $size)
+    public function update(Request $request, Subject $subject)
     {
         //
     }
@@ -87,14 +88,14 @@ class SizeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\size  $size
+     * @param  \App\Model\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $size)
+    public function destroy(Model $subject)
     {
-        $size->delete();
+        $subject->delete();
 
-        \Session::flash('success', $size->name . ' has been remove successfully.');
+        \Session::flash('success', $subject->name . ' has been remove successfully.');
 
         return back();
     }

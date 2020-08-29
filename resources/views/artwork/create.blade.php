@@ -1,86 +1,10 @@
 @extends('layouts.app')
 
-@section('nav')
-<nav class="navbar navbar-expand-lg navbar-light">
-    <span class="navbar-brand mb-0 h1">Artworks</span>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('artwork.index') }}">Artwork</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('view.notification') }}">
-                    Notifications
-                    @if(auth()->user()->unreadNotifications->count() != 0)
-                        <span class="badge badge-success">{{ auth()->user()->unreadNotifications->count() }}</span>
-                    @endif
-                </a>
-            </li>
-            @can('administrator')
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Utility
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('component.subject.index') }}">Subject</a>
-                    <!-- <a class="dropdown-item" href="{{ route('component.city.index') }}">City</a> -->
-                    <a class="dropdown-item" href="{{ route('component.category.index') }}">Category</a>
-                    <a class="dropdown-item" href="{{ route('component.style.index') }}">Style</a>
-                    <a class="dropdown-item" href="{{ route('component.medium.index') }}">Medium</a>
-                    <a class="dropdown-item" href="{{ route('component.material.index') }}">Material</a>
-                    <a class="dropdown-item" href="{{ route('component.size.index') }}">Size</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userManagementDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    User Management
-                </a>
-                <div class="dropdown-menu" aria-labelledby="userManagementDropDown">
-                    <a class="dropdown-item" href="{{ route('user.index') }}">{{ "User's" }}</a>
-                    <a class="dropdown-item" href="{{ route('users.trash') }}">Trash</a>
-                </div>
-            </li>
-            @endcan
-        </ul>
-
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{--  {{ Auth::user()->roles()->get()->pluck('name')->first() }}  --}}
-                    {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#changepass" data-toggle="modal" data-target="#changePassword">
-                        Change Password
-                    </a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                </div>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-@endsection
-
 @section('content')
 
 <div class="container">
     <div class="row">
         <div class="col">
-
             <form action="{{ route('artwork.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -99,23 +23,23 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" value="{{ old('city') }}" name="city" required>
-                </div>
 
 
-                <div class="form-group col-md-4">
-                    <label for="category">Category</label>
-                    <select name="category" class="form-control" value="{{ old('category') }}" required>
-                        <option value="">-</option>
-                        @foreach($category as $category)
-                            <option value="{{ $category->name }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                    <div class="form-group col-md-4">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" value="{{ old('city') }}" name="city" required>
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        <label for="category">Category</label>
+                        <select name="category" class="form-control" value="{{ old('category') }}" required>
+                            <option value="">-</option>
+                            @foreach($category as $category)
+                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-row">
@@ -200,33 +124,19 @@
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
 
-                        <!-- <div>
-                            <ul class="list-unstyled">
-                                <li><h5>Guidelines must be follow:</h5>
-                                    <ul>Guideline 1</ul>
-                                    <ul>Guideline 2</ul>
-                                    <ul>Guideline 3</ul>
-                                    <ul>Guideline 4</ul>
-                                    <ul>Guideline 5</ul>
-                                    <ul>Guideline 6</ul>
-                                </li>
-                            </ul>
-                        </div> -->
-
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary">Save</button>
                             <a href="/artwork" class="btn border-none">Cancel</a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
-                    </div>
-
                 </div>
-            </form>
 
+                <div class="form-group">
+                    <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
+                </div>
+
+            </form>
         </div>
     </div>
-  </form>
 </div>
 @endsection

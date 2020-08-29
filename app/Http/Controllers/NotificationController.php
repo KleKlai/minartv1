@@ -29,4 +29,18 @@ class NotificationController extends Controller
 
         return redirect()->route('artwork.show', $notification->data['subject']);
     }
+
+    public function singleMarkAsRead($id)
+    {
+        $notification = auth()->user()->unreadNotifications->where('id',$id)->markAsRead();
+
+        return redirect()->route('notification.view');
+    }
+
+    public function markAllAsRead()
+    {
+        auth()->user()->unreadNotifications->markAsRead();
+
+	    return redirect()->route('notification.view');
+    }
 }

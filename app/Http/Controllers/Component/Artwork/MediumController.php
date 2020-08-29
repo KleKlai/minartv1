@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
-use App\Model\City as Model;
+
+use App\Model\Medium as Model;
 use Illuminate\Http\Request;
 
-class CityController extends Controller
+class MediumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,7 +17,7 @@ class CityController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.city.index', compact('data'));
+        return view('component.artwork.medium.index', compact('data'));
     }
 
     /**
@@ -57,10 +53,10 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\City  $city
+     * @param  \App\Model\Medium  $medium
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(Medium $medium)
     {
         //
     }
@@ -68,10 +64,10 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\City  $city
+     * @param  \App\Model\Medium  $medium
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit(Medium $medium)
     {
         //
     }
@@ -80,10 +76,10 @@ class CityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\City  $city
+     * @param  \App\Model\Medium  $medium
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, Medium $medium)
     {
         //
     }
@@ -91,14 +87,14 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\City  $city
+     * @param  \App\Model\Medium  $medium
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy(Model $medium)
     {
-        $city->delete();
+        $medium->delete();
 
-        \Session::flash('success', $city->name . ' has been remove successfully.');
+        \Session::flash('success', $medium->name . ' has been remove successfully.');
 
         return back();
     }

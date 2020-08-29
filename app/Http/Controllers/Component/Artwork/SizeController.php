@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
 
-use App\Model\Medium as Model;
+use App\Model\size as Model;
 use Illuminate\Http\Request;
 
-class MediumController extends Controller
+class SizeController extends Controller
 {
     public function __construct()
     {
@@ -17,7 +17,7 @@ class MediumController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.medium.index', compact('data'));
+        return view('component.artwork.size.index', compact('data'));
     }
 
     /**
@@ -53,10 +53,10 @@ class MediumController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Medium  $medium
+     * @param  \App\Model\size  $size
      * @return \Illuminate\Http\Response
      */
-    public function show(Medium $medium)
+    public function show(size $size)
     {
         //
     }
@@ -64,10 +64,10 @@ class MediumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Medium  $medium
+     * @param  \App\Model\size  $size
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medium $medium)
+    public function edit(size $size)
     {
         //
     }
@@ -76,10 +76,10 @@ class MediumController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Medium  $medium
+     * @param  \App\Model\size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medium $medium)
+    public function update(Request $request, size $size)
     {
         //
     }
@@ -87,14 +87,14 @@ class MediumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Medium  $medium
+     * @param  \App\Model\size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $medium)
+    public function destroy(Model $size)
     {
-        $medium->delete();
+        $size->delete();
 
-        \Session::flash('success', $medium->name . ' has been remove successfully.');
+        \Session::flash('success', $size->name . ' has been remove successfully.');
 
         return back();
     }

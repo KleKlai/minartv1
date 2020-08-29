@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Component;
+namespace App\Http\Controllers\Component\Artwork;
 
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ class StyleController extends Controller
     public function index()
     {
         $data = Model::all();
-        return view('component.style.index', compact('data'));
+        return view('component.artwork.style.index', compact('data'));
     }
 
     /**

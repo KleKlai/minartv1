@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $users = User::where('id', '!=', Auth::user()->id)->get();
 
-        return view('admin.admin', compact('users'));
+        return view('admin.usermanagement.index', compact('users'));
     }
 
     /**
@@ -48,18 +48,12 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
         $user       = User::find($user->id);
         $artwork    = $user->artwork()->get();
 
-        return view('admin.view', compact('user', 'artwork'));
+        return view('admin.usermanagement.show', compact('user', 'artwork'));
     }
 
     /**
@@ -72,7 +66,7 @@ class UserController extends Controller
     {
         $role = Role::all();
 
-        return view('admin.edit', compact('user', 'role'));
+        return view('admin.usermanagement.edit', compact('user', 'role'));
     }
 
     /**
@@ -139,7 +133,7 @@ class UserController extends Controller
     {
         $data = User::onlyTrashed()->get();
 
-        return view('admin.trash', compact('data'));
+        return view('admin.usermanagement.trash', compact('data'));
     }
 
     public function restore($id)
