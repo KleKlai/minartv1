@@ -312,7 +312,7 @@
                                                     {{ Auth::user()->name }}
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                    <a class="dropdown-item" href="#changepass" data-toggle="modal" data-target="#changePassword">
+                                                    <a class="dropdown-item" href="{{ route('password.index') }}">
                                                         Change Password
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -342,46 +342,6 @@
                 </div>
             </div>
             <div class="container"><p class="footer">Copyright 2020. Mindanao Art</p></div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-                <form method="POST" action="{{ route('change.password') }}">
-                    @csrf
-
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">New Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Confirm Password</label>
-                            <input class="form-control" id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link text-decoration-none" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-
-                </form>
-            </div>
         </div>
     </div>
 

@@ -23,7 +23,8 @@ Auth::routes();
 
 // TODO: General Section ( For All User )
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('password', 'UserController@changePassword')->name('change.password');
+Route::get('change/password', 'PasswordController@index')->name('password.index')->middleware('password.confirm');
+Route::post('change/password', 'PasswordController@changePassword')->name('password.change');
 Route::resource('artwork', 'ArtworkController');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
@@ -37,7 +38,10 @@ Route::prefix('notification')->name('notification.')->middleware('auth')->group(
 });
 
 // TODO: Restricted Area ( For Administrator )
-Route::resource('/user', 'UserController')->middleware('can:administrator');
+Route::middleware(['can:administrator', 'password.confirm'])->group(function () {
+    Route::resource('/user', 'UserController');
+});
+
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
 Route::patch('artwork/status/{artwork}', 'ArtworkController@changeStatus')->name('status.change');

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Notification')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -12,7 +14,11 @@
             @endif
 
             @forelse($data as $notification)
-                <a class="nav-link" href="{{ route('notification.view.read', $notification->id) }}">
+                @if($notification->data['subject'] == 'System')
+                    <a class="nav-link" href="{{ route('notification.read', $notification) }}">
+                @else
+                    <a class="nav-link" href="{{ route('notification.view.read', $notification->id) }}">
+                @endif
                     <div class="card">
                         <div class="card-body">
                             @if($notification->read_at == '')
