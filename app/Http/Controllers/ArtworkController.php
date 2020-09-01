@@ -6,6 +6,7 @@ use App\Artwork;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Role;
 
 // Components
@@ -91,7 +92,13 @@ class ArtworkController extends Controller
         $file_extention = $request['file']->getClientOriginalExtension();
         // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
         $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
-        $file_path = $request['file']->storeAs('public/artwork', $file_name);
+        // $file_path = $request['file']->storeAs('public/artwork', $file_name);
+
+        //TODO: Add Watermark
+        $img = Image::make($request['file']);
+        $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
+        // $img->save(public_path('artworks', $file_name));
+
 
         // dd($file_name);
         $request->merge(['attachment' => $file_name]);
@@ -118,7 +125,7 @@ class ArtworkController extends Controller
 
         \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
 
-        return redirect()->route('artwork.index');
+        return redirect()->route('home');
     }
 
     /**

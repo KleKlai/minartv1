@@ -126,7 +126,7 @@
 
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/artwork" class="btn border-none">Cancel</a>
+                            {{-- <a href="/artwork" class="btn border-none">Cancel</a> --}}
                         </div>
                     </div>
                 </div>

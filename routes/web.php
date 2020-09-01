@@ -19,12 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 // For Email Verification
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 // TODO: General Section ( For All User )
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('change/password', 'PasswordController@index')->name('password.index')->middleware('password.confirm');
 Route::post('change/password', 'PasswordController@changePassword')->name('password.change');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('artwork', 'ArtworkController');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
@@ -38,18 +39,17 @@ Route::prefix('notification')->name('notification.')->middleware('auth')->group(
 });
 
 // TODO: Restricted Area ( For Administrator )
-Route::middleware(['can:administrator', 'password.confirm'])->group(function () {
+// Route::middleware(['can:administrator', 'password.confirm'])->group(function () {
     Route::resource('/user', 'UserController');
-});
+// });
 
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
 Route::patch('artwork/status/{artwork}', 'ArtworkController@changeStatus')->name('status.change');
 
-Route::namespace('Component')->prefix('Component')->name('component.')->middleware('can:administrator')->group(function() {
+Route::namespace('Component\Artwork')->prefix('Component')->name('component.')->middleware('can:administrator')->group(function() {
 
     Route::resource('subject', 'SubjectController', ['except' => 'create', 'show', 'edit', 'update']);
-    Route::resource('city', 'CityController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('category', 'CategoryController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('style', 'StyleController', ['except' => 'create', 'show', 'edit', 'update']);
     Route::resource('medium', 'MediumController', ['except' => 'create', 'show', 'edit', 'update']);
@@ -57,3 +57,15 @@ Route::namespace('Component')->prefix('Component')->name('component.')->middlewa
     Route::resource('size', 'sizeController', ['except' => 'create', 'show', 'edit', 'update']);
 
 });
+
+// Route::get('addWatermark', function()
+// {
+//     $img = Image::make(public_path('artwork/main.jpg'));
+
+//     /* insert watermark at bottom-right corner with 10px offset */
+//     $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
+
+//     $img->save(public_path('artwork/main-new.jpg'));
+
+//     dd('saved image successfully.');
+// });
