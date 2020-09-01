@@ -27,8 +27,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $currentUserRole = Auth::user()->roles()->get()->pluck('name')->first();
-        if($currentUserRole == 'Administrator' || $currentUserRole == 'Curator') {
+        if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
             $data = Artwork::all();
         } else {
             $data = Artwork::where('user_id', Auth::user()->id)->get();

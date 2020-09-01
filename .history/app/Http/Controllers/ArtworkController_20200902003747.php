@@ -28,9 +28,7 @@ class ArtworkController extends Controller
 
     public function index()
     {
-
-        $currentUserRole = Auth::user()->roles()->get()->pluck('name')->first();
-        if($currentUserRole == 'Administrator' || $currentUserRole == 'Curator') {
+        if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
             $artwork = Artwork::all();
         } else {
             $artwork = Artwork::where('user_id', Auth::user()->id)->get();

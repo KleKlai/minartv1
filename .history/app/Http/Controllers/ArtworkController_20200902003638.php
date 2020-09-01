@@ -28,9 +28,7 @@ class ArtworkController extends Controller
 
     public function index()
     {
-
-        $currentUserRole = Auth::user()->roles()->get()->pluck('name')->first();
-        if($currentUserRole == 'Administrator' || $currentUserRole == 'Curator') {
+        if(Auth::user()->roles()->get()->pluck('name')->first() == 'Administrator') {
             $artwork = Artwork::all();
         } else {
             $artwork = Artwork::where('user_id', Auth::user()->id)->get();
@@ -94,11 +92,11 @@ class ArtworkController extends Controller
         $file_extention = $request['file']->getClientOriginalExtension();
         // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
         $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
-        $file_path = $request['file']->storeAs('public/artwork', $file_name);
+        // $file_path = $request['file']->storeAs('public/artwork', $file_name);
 
         //TODO: Add Watermark
-        // $img = Image::make($request['file']);
-        // $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
+        $img = Image::make($request['file']);
+        $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
         // $img->save(public_path('artworks', $file_name));
 
 

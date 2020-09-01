@@ -6,12 +6,12 @@
         div.col
     </div> -->
     <div class="row">
-        <div class="col-2 d-none d-lg-block">
+        <div class="col-2">
             <div class="col">
                 <img src="/images/logo.png" alt="Mindanao Art Logo">
             </div>
         </div>
-        <div class="col-md">
+        <div class="col">
 
             <h2>
                 <a class="back" href="/">

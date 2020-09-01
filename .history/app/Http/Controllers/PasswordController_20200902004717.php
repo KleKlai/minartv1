@@ -41,6 +41,6 @@ class PasswordController extends Controller
 
         Auth::user()->notify(new \App\Notifications\notify($details));
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

@@ -30,6 +30,7 @@ class ArtworkController extends Controller
     {
 
         $currentUserRole = Auth::user()->roles()->get()->pluck('name')->first();
+        dd($currentUserRole);
         if($currentUserRole == 'Administrator' || $currentUserRole == 'Curator') {
             $artwork = Artwork::all();
         } else {

@@ -6,7 +6,7 @@
         div.col
     </div> -->
     <div class="row">
-        <div class="col-2 d-none d-lg-block">
+        <div class="col-3">
             <div class="col">
                 <img src="/images/logo.png" alt="Mindanao Art Logo">
             </div>

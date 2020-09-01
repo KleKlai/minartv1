@@ -39,9 +39,9 @@ Route::prefix('notification')->name('notification.')->middleware('auth')->group(
 });
 
 // TODO: Restricted Area ( For Administrator )
-Route::middleware(['can:administrator'])->group(function () {
+// Route::middleware(['can:administrator', 'password.confirm'])->group(function () {
     Route::resource('/user', 'UserController');
-});
+// });
 
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
@@ -58,14 +58,14 @@ Route::namespace('Component\Artwork')->prefix('Component')->name('component.')->
 
 });
 
-// Route::get('addWatermark', function()
-// {
-//     $img = Image::make(public_path('sample_resource/main.jpg'));
+Route::get('addWatermark', function()
+{
+    $img = Image::make(public_path('sample_resource/main.jpg'));
 
-//     /* insert watermark at bottom-right corner with 10px offset */
-//     $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
+    /* insert watermark at bottom-right corner with 10px offset */
+    $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
 
-//     $img->save(public_path('sample_resource/main-new.jpg'));
+    $img->save(public_path('sample_resource/main-new.jpg'));
 
-//     dd('saved image successfully.');
-// });
+    dd('saved image successfully.');
+});

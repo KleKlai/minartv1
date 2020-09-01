@@ -39,9 +39,9 @@ Route::prefix('notification')->name('notification.')->middleware('auth')->group(
 });
 
 // TODO: Restricted Area ( For Administrator )
-Route::middleware(['can:administrator'])->group(function () {
+// Route::middleware(['can:administrator', 'password.confirm'])->group(function () {
     Route::resource('/user', 'UserController');
-});
+// });
 
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
 Route::patch('user/restore/{id}', 'UserController@restore')->name('user.restore');
