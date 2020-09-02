@@ -23,9 +23,8 @@ Auth::routes(['verify' => true]);
 
 // TODO: General Section ( For All User )
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('change/password', 'PasswordController@index')->name('password.index')->middleware('password.confirm');
-Route::post('change/password', 'PasswordController@changePassword')->name('password.change');
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('change/password', 'Utility\PasswordController@index')->name('password.index')->middleware('password.confirm');
+Route::post('change/password', 'Utility\PasswordController@changePassword')->name('password.change');
 Route::resource('artwork', 'ArtworkController');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
@@ -57,6 +56,8 @@ Route::namespace('Component\Artwork')->prefix('Component')->name('component.')->
     Route::resource('size', 'sizeController', ['except' => 'create', 'show', 'edit', 'update']);
 
 });
+
+Route::resource('FAQ', 'Utility\FAQController');
 
 // Route::get('addWatermark', function()
 // {

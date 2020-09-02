@@ -32,13 +32,13 @@
                             </div>
                             <div class="col">
                                 <a class="link" href="/register">
-                                    SIGN ME UP  
+                                    SIGN ME UP
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
                                 </a>
                                 <p>Already have an account? <a class="link" style="font-size: 12px;" href="/login">Login</a></p>
-                                <p>To get up-to-date news</p>
+                                <!-- <p>To get up-to-date news</p> -->
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- small screen -->
         <div class="container small">
             <div class="row">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col  py-3">
                                 <a class="link" href="/register">
-                                    SIGN ME UP  
+                                    SIGN ME UP
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
                                     <font-awesome-icon icon="angle-right" />
@@ -115,7 +115,7 @@
     library.add(faAngleRight)
     Vue.component('font-awesome-icon', FontAwesomeIcon)
     Vue.config.productionTip = false
-    
+
     export default {
         data: function () {
             var now = new Date();
@@ -147,7 +147,7 @@
     body {
         background-color: white;
     }
-    
+
     #pattern {
         width: 100%;
         background: url('/images/spattern.png');
@@ -177,7 +177,7 @@
         display: grid;
         justify-items: center;
         grid-template-columns: 100px 10px 100px 10px 100px 10px 100px;
-        grid-template-areas: 
+        grid-template-areas:
             "day column1 hour column2 minute column3 second"
             "dayl . hourl . minutel . secondl";
     }
@@ -207,12 +207,12 @@
         color: #5e4119;
     }
 
-    @media (max-width: 992px) { 
+    @media (max-width: 992px) {
         #root {
             display: grid;
             justify-items: center;
             grid-template-columns: 30px 10px 30px 10px 30px 10px 30px;
-            grid-template-areas: 
+            grid-template-areas:
                 "day column1 hour column2 minute column3 second"
                 "dayl . hourl . minutel . secondl";
         }

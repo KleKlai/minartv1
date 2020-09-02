@@ -9,14 +9,16 @@
             <form action="{{ route('artwork.destroy', $artwork) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <a href="" class="btn btn-danger btn-sm mb-2"  data-toggle="modal" data-target="#confirmDeleteModal" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</a>
+
+                <a href="javascript:void()" class="btn btn-warning btn-sm mb-2" data-toggle="modal" data-target="#categoryModal">Update Status</a>
+
                 @can('administrator')
+                <a href="" class="btn btn-danger btn-sm mb-2"  data-toggle="modal" data-target="#confirmDeleteModal" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</a>
                     <!-- <button type="submit" class="btn btn-danger btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</button> -->
-                    <a href="javascript:void()" class="btn btn-warning btn-sm mb-2" data-toggle="modal" data-target="#categoryModal">Update Status</a>
+                    <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
+                        Edit
+                    </a>
                 @endcan
-                <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
-                    Edit
-                </a>
                 <a class="btn btn-light btn-sm mb-2" href="{{ route('download.attachment', $artwork) }}">Download</a>
             </form>
         </div>
