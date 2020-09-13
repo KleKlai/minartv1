@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Role;
+use CustomNotify;
 
 // Components
 use App\Model\Subject;
@@ -112,18 +113,9 @@ class ArtworkController extends Controller
         //Remove file $request
         $artwork = Artwork::create($request->except(['file']));
 
-        //Notify Admin for submission
-        // $user = \App\User::find(1);
-        $user = Role::where('name', 'Administrator')->first()->users()->get();
-
-        $details = [
-            'header'    => Auth::user()->name,
-            'subject'   => $artwork->uuid,
-            'body'      => Auth::user()->name . ' submitted art ' . $request->name,
-        ];
-
-        // $user->notify(new \App\Notifications\notify($details));
-        Notification::send($user, new \App\Notifications\notify($details));
+        //Notify Admin and Curator for submission
+        $message = Auth::user()->name . ' submitted art ' . $request->name;
+        CustomNotify::Both($artwork->uuid, $message);
 
         \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
 
@@ -195,18 +187,11 @@ class ArtworkController extends Controller
 
         $artwork->update($request->all());
 
-        //Notify Admin for submission
-        $user = \App\User::find($artwork->user_id);
+        //Notify Artist
+        $message = 'Your artwork ' . $artwork->name . ' has been modified.';
+        CustomNotify::Artist($artwork->user_id, $artwork->uuid, $message);
 
-        $details = [
-            'header'    => Auth::user()->name,
-            'subject'   => $artwork->uuid,
-            'body'      => 'Your artwork ' . $artwork->name . ' has been modified.',
-        ];
-
-        $user->notify(new \App\Notifications\notify($details));
-
-        \Session::flash('success', 'Artwork has been edited successfully.');
+        \Session::flash('success', 'Artwork has been update successfully.');
 
         return redirect()->route('artwork.show', $artwork);
     }
@@ -248,10 +233,6 @@ class ArtworkController extends Controller
 
     public function changeStatus(Request $request, artwork $artwork)
     {
-        //Check if the current login user has admin previlege
-        if(\Gate::denies('administrator')){
-            return back();
-        }
 
         $request->validate([
             'status'        => 'required',
@@ -260,16 +241,9 @@ class ArtworkController extends Controller
 
         $artwork->update($request->all());
 
-        //Notify Admin for submission
-        $user = \App\User::find($artwork->user_id);
-
-        $details = [
-            'header'    => Auth::user()->name,
-            'subject'   => $artwork->uuid,
-            'body'      => 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.',
-        ];
-
-        $user->notify(new \App\Notifications\notify($details));
+        //Notify Artist
+        $message = 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.';
+        CustomNotify::Artist($artwork->user_id, $artwork->uuid, $message);
 
         return back();
     }

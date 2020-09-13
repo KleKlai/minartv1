@@ -13,9 +13,10 @@ class FAQController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        dd('FAQ');
+        return view('component.faq.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class FAQController extends Controller
      */
     public function create()
     {
-        //
+        return view('component.faq.create');
     }
 
     /**
@@ -36,7 +37,7 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -47,7 +48,7 @@ class FAQController extends Controller
      */
     public function show(FAQ $fAQ)
     {
-        //
+        return view('component.faq.show');
     }
 
     /**
@@ -58,7 +59,7 @@ class FAQController extends Controller
      */
     public function edit(FAQ $fAQ)
     {
-        //
+        return view('component.faq.edit');
     }
 
     /**
@@ -70,7 +71,7 @@ class FAQController extends Controller
      */
     public function update(Request $request, FAQ $fAQ)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -81,6 +82,10 @@ class FAQController extends Controller
      */
     public function destroy(FAQ $fAQ)
     {
-        //
+        $faq->delete();
+
+        \Session::flash('success', 'Data purge successfully.');
+
+        return view('component.faq.index');
     }
 }

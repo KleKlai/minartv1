@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'name'          =>  'System Adminstrator',
             'mobile'        =>  '09952247045',
             'categories'    =>  'N/A',
-            'email'         =>  'admin@mindanaoart.com',
+            'email'         =>  'admin@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'name'          =>  'Artist',
             'mobile'        =>  '09952247045',
             'categories'    =>  'Art Spaces',
-            'email'         =>  'maynard@mindanaoart.com',
+            'email'         =>  'maynard@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);
@@ -42,12 +42,13 @@ class UsersTableSeeder extends Seeder
             'name'          =>  'Curator',
             'mobile'        =>  '09952247045',
             'categories'    =>  'Art Spaces',
-            'email'         =>  'curator@mindanaoart.com',
+            'email'         =>  'curator@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
         ]);
 
         $Admin_user->roles()->attach($Admin);
         $Artist_user->roles()->attach($Artist);
+        $Curator_user->roles()->attach($Curator);
     }
 }

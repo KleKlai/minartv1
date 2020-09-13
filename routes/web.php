@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if(Auth::check()){
+        return redirect('home');
+    }
     return view('welcome');
 });
 
@@ -28,7 +31,7 @@ Route::post('change/password', 'Utility\PasswordController@changePassword')->nam
 Route::resource('artwork', 'ArtworkController');
 Route::get('download/{artwork}', 'ArtworkController@download')->name('download.attachment');
 
-Route::prefix('notification')->name('notification.')->middleware('auth')->group(function() {
+Route::namespace('Utility')->prefix('notification')->name('notification.')->middleware('auth')->group(function() {
 
     Route::get('/view', 'NotificationController@index')->name('view');
     Route::get('/clear', 'NotificationController@markAllAsRead')->name('clear');
@@ -38,8 +41,8 @@ Route::prefix('notification')->name('notification.')->middleware('auth')->group(
 });
 
 // TODO: Restricted Area ( For Administrator )
-Route::middleware(['can:administrator'])->group(function () {
-    Route::resource('/user', 'UserController');
+Route::namespace('Admin')->middleware(['can:administrator'])->group(function () {
+    Route::resource('user', 'UserController');
 });
 
 Route::get('users/trash', 'UserController@trash')->name('users.trash');
@@ -57,7 +60,10 @@ Route::namespace('Component\Artwork')->prefix('Component')->name('component.')->
 
 });
 
-Route::resource('FAQ', 'Utility\FAQController');
+// TODO: Frequently Ask Question
+Route::prefix('help')->namespace('Utility')->group( function() {
+    Route::resource('faq', 'FAQController');
+});
 
 // Route::get('addWatermark', function()
 // {

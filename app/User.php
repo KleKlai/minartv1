@@ -86,4 +86,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Artwork');
     }
 
+    public function faq()
+    {
+        return $this->hasMany('App\Model\Utilities\FAQ');
+    }
+
 }

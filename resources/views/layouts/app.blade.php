@@ -248,6 +248,9 @@
                                                         <a class="dropdown-item" href="{{ route('users.trash') }}">Trash</a>
                                                     </div>
                                                 </li>
+                                                {{--  <li class="nav-item">
+                                                    <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>
+                                                </li>  --}}
                                             @endcan
                                         </ul>
 
