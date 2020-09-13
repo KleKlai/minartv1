@@ -15,33 +15,29 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link
     href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     rel="stylesheet"
     />
-    <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
+
     <!-- MDB -->
-    <link
+    <!-- <link
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.css"
     rel="stylesheet"
-    />
+    /> -->
+
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
     <style>
         * {
@@ -189,7 +185,7 @@
 </head>
 <body>
     <div id="app">
-
+ 
         <div id="pattern">
             <img src="/images/spattern.png" alt="">
         </div>
@@ -329,30 +325,25 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }
-
-        // $('button[name="remove_levels"]').on('click', function(e) {
-        //     console.log("Button Clicked!!!")
-        //     var $form = $(this).closest('form');
-        //     e.preventDefault();
-        //     $('#confirm').modal({
-        //         backdrop: 'static',
-        //         keyboard: false
-        //     })
-        //     .on('click', '#delete', function(e) {
-        //         $form.trigger('submit');
-        //         });
-        //     $("#cancel").on('click',function(e){
-        //         e.preventDefault();
-        //         $('#confirm').modal.model('hide');
-        //     });
-        // });
+        } 
     </script>
     <!-- MDB -->
-    <script
+    <!-- <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-alpha4/mdb.min.js"
-    ></script>
+    ></script> -->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
+
+    
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
+
+    @yield('javascript')
 
 </body>
 </html>
