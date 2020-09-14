@@ -56,8 +56,8 @@
                 </div>
 
                 <div class="form-group row">
-                    <select name="categories" id="categories" onchange="showOtherDropDown()" class=" @error('categories') is-invalid @enderror">
-                        <option selected>Categories</option>
+                    <select name="category" id="categories" onchange="showOtherDropDown()" class=" @error('categories') is-invalid @enderror">
+                        <option value="" selected>Categories</option>
                         <option value="Gallery">Gallery</option>
                         <option value="Regional Group">Regional Group</option>
                         <option value="Special Projects">Special Projects</option>
@@ -73,7 +73,7 @@
 
                 <div class="form-group row d-none" id="gallery">
                     <select name="gallery" class="@error('gallery') is-invalid @enderror">
-                        <option selected>Choose Gallery...</option>
+                        <option value="" selected>Choose Gallery...</option>
                         <option value="Agusan Artist Association (AAA)">Agusan Artist Association (AAA)</option>
                         <option value="Bukidnon Local Artists Club (BLAC)">Bukidnon Local Artists Club (BLAC)</option>
                         <option value="Datu Bago">Datu Bago</option>
@@ -103,7 +103,7 @@
 
                 <div class="form-group row d-none" id="specialProjects">
                     <select name="specialProjects" class="@error('specialProjects') is-invalid @enderror">
-                        <option selected>Choose Special Project...</option>
+                        <option value="" selected>Choose Special Project...</option>
                         <option value="Tricycle">Tricycle</option>
                         <option value="Heart">Heart</option>
                         <option value="Bangon Luayon">Bangon Luayon</option>
@@ -120,7 +120,7 @@
 
                 <div class="form-group row d-none" id="regionalGroup">
                     <select name="regionalGroup" class="@error('regionalGroup') is-invalid @enderror">
-                        <option selected>Choose Regional Group...</option>
+                        <option value="" selected>Choose Regional Group...</option>
                         <option value="Regional Group 1">Regional Group 1</option>
                     </select>
 

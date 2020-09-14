@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         $Admin_user = User::create([
             'name'          =>  'System Adminstrator',
             'mobile'        =>  '09952247045',
-            'categories'    =>  'N/A',
+            'category'      =>  'N/A',
             'email'         =>  'admin@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
         $Artist_user = User::create([
             'name'          =>  'Artist',
             'mobile'        =>  '09952247045',
-            'categories'    =>  'Art Spaces',
+            'category'      =>  'Art Spaces',
             'email'         =>  'maynard@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
         $Curator_user = User::create([
             'name'          =>  'Curator',
             'mobile'        =>  '09952247045',
-            'categories'    =>  'Art Spaces',
+            'category'      =>  'Art Spaces',
             'email'         =>  'curator@min-art.org',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password'      =>   Hash::make('bxtr1605'),

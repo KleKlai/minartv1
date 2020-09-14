@@ -185,7 +185,7 @@
 </head>
 <body>
     <div id="app">
- 
+
         <div id="pattern">
             <img src="/images/spattern.png" alt="">
         </div>
@@ -325,7 +325,7 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        } 
+        }
     </script>
     <!-- MDB -->
     <!-- <script
@@ -336,7 +336,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
 
-    
+
     <script>
         $(document).ready( function () {
             $('#myTable').DataTable();
