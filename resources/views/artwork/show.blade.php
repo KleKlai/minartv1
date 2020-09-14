@@ -16,10 +16,14 @@
 
                 @can('administrator')
                 <a href="" class="btn btn-danger btn-sm mb-2"  data-toggle="modal" data-target="#confirmDeleteModal" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</a>
-                    <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
-                        Edit
-                    </a>
                 @endcan
+
+                @canany(['curator', 'administrator'])
+                <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
+                    Edit
+                </a>
+                @endcanany
+
             </form>
         </div>
         <div class="col">
