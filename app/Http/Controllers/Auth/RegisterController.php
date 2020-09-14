@@ -76,12 +76,27 @@ class RegisterController extends Controller
         // $file_name = time().rand(99,999).'file.'.$file_extention;
         // $file_path = $data['file']->storeAs('public/files', $file_name);
 
+        // Custom Validate to add subcategory data
+        $subcategory = null;
+
+        if(!empty($data['gallery'])){
+            $subcategory = $data['gallery'];
+        }
+
+        if(!empty($data['regional'])){
+            $subcategory = $data['regional'];
+        }
+
+        if(!empty($data['special'])){
+            $subcategory = $data['special'];
+        }
+
         $user = User::create([
             'name'      => $data['name'],
             'email'     => $data['email'],
             'mobile'    => $data['mobile'],
             'category'  => $data['category'],
-            'subcategory'   => $data['subcategory'],
+            'subcategory'   => $subcategory,
             'password'  => Hash::make($data['password']),
         ]);
 
