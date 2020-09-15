@@ -121,7 +121,11 @@
                 <div class="form-group row d-none" id="regionalGroup">
                     <select name="regionalGroup" class="@error('regionalGroup') is-invalid @enderror">
                         <option value="" selected>Choose Regional Group...</option>
-                        <option value="Regional Group 1">Regional Group 1</option>
+                        <option value="North Cotabato">North Cotabato</option>
+                        <option value="Caraga Region">Caraga Region</option>
+                        <option value="Northern Mindanao">Northern Mindanao</option>
+                        <option value="Davao del Sur">Davao del Sur</option>
+                        <option value="Zamboanga Peninsula">Zamboanga Peninsula</option>
                     </select>
 
                     @error('regionalGroup')
