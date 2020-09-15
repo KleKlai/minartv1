@@ -8,6 +8,8 @@
     <div class="row">
         <div class="col">
 
+            
+            <img src="{{ asset('images/assets/page_not_found.svg') }}" alt="No Result Found" width="300" class="mx-auto d-block">
 
             <div id="columns">
                 @forelse($data as $data)
