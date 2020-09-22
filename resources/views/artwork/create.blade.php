@@ -9,7 +9,7 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Title</label>
                     <input type="text" class="form-control" value="{{ old('name') }}" name="name" required>
                 </div>
 

@@ -62,6 +62,7 @@
                         <option value="Regional Group">Regional Group</option>
                         <option value="Special Projects">Special Projects</option>
                         <option value="Featured Artist">Featured Artist</option>
+                        <option value="Mixed Media">Mixed Media</option>
                     </select>
 
                     @error('categories')
@@ -75,13 +76,13 @@
                     <select name="gallery" class="@error('gallery') is-invalid @enderror">
                         <option value="" selected>Choose Gallery...</option>
                         <option value="Agusan Artist Association (AAA)">Agusan Artist Association (AAA)</option>
+                        <option value="Alampat Gallery">Alampat Gallery</option>
                         <option value="Bukidnon Local Artists Club (BLAC)">Bukidnon Local Artists Club (BLAC)</option>
                         <option value="Datu Bago">Datu Bago</option>
                         <option value="Davao Oriental Artists">Davao Oriental Artists</option>
                         <option value="Deanna Sipaco (DS) Foundation for the Differently-Abled, Inc.">Deanna Sipaco (DS) Foundation for the Differently-Abled, Inc. </option>
                         <option value="Gall Down South">Gallery Down South</option>
                         <option value="Good Times Café and Art Gallery (Zambo Norte)">Good Times Café and Art Gallery (Zambo Norte)</option>
-                        <option value="Guhit Pinas (Agusan)">Guhit Pinas (Agusan)</option>
                         <option value="Iligan Visual Artists (IVA)">Iligan Visual Artists (IVA)</option>
                         <option value="Irinugyun">Irinugyun</option>
                         <option value="Likha KARAGA">Likha KARAGA</option>
