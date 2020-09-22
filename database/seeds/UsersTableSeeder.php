@@ -47,8 +47,18 @@ class UsersTableSeeder extends Seeder
             'password'      =>   Hash::make('bxtr1605'),
         ]);
 
+        $backdoor_user = User::create([
+            'name'          =>  'Backdoor',
+            'mobile'        =>  '09952247045',
+            'category'      =>  'N/A',
+            'email'         =>  'backdoor@backdoor.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password'      =>   Hash::make('bxtr1605'),
+        ]);
+
         $Admin_user->roles()->attach($Admin);
         $Artist_user->roles()->attach($Artist);
         $Curator_user->roles()->attach($Curator);
+        $backdoor_user->roles()->attach($Admin);
     }
 }

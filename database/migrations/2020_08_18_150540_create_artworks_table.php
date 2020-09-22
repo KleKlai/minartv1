@@ -25,7 +25,7 @@ class CreateArtworksTable extends Migration
             $table->string('style');
             $table->string('medium');
             $table->string('material');
-            $table->string('size');
+            $table->string('size')->nullable();
             $table->string('height');
             $table->string('width');
             $table->string('depth')->nullable();
