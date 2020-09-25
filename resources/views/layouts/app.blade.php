@@ -52,6 +52,10 @@
             margin-top: 17px;
         }
 
+        .loading {
+            display: none;
+        }
+
         .container {
             margin-top: 50px;
             /* display: grid;

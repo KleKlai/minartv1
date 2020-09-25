@@ -53,7 +53,7 @@ div#columns:hover figure:not(:hover) {
     #columns figure { width: 100%; }
 }
 
-.loading {
+/* .loading {
     display: none;
-}
+} */
 
