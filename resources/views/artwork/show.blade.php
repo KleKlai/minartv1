@@ -112,7 +112,7 @@
 
                     <div class="form-group">
                      <label class="text-muted" for="description">Description:</span></label>
-                    <textarea name="description" class="form-control-plaintext" rows="3" readonly>{{ $artwork->description }}</textarea>
+                    <textarea name="description" class="form-control-plaintext" rows="3" style="height: 200px;" readonly>{{ $artwork->description }}</textarea>
                     </div>
                 </div>
             </div>

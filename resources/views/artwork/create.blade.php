@@ -120,7 +120,7 @@
                     <div class="form-group col-md-6">
                         <label for="attachment">Upload Artwork Photo</label>
                         <div class="custom-file mb-3">
-                            <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}" required>
+                            <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}">
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
 

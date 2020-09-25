@@ -31,7 +31,7 @@ class CreateArtworksTable extends Migration
             $table->string('depth')->nullable();
             $table->string('price');
             $table->longText('description');
-            $table->string('attachment');
+            $table->string('attachment')->nullable();
             $table->string('status');
             $table->string('remarks')->nullable();
             $table->softDeletes();

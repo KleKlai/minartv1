@@ -90,21 +90,17 @@ class ArtworkController extends Controller
             'description'   => ['nullable', 'string'],
             'file'          => ['nullable', 'mimes:jpg,png,jpeg'],
         ]);
-
+            // dd($request);
         // Upload File
-        $file_extention = $request['file']->getClientOriginalExtension();
-        // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
-        $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
-        $file_path = $request['file']->storeAs('public/artwork', $file_name);
+        if($request->hasFile('file')){
+            $file_extention = $request['file']->getClientOriginalExtension();
+            // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
+            $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
+            $file_path = $request['file']->storeAs('public/artwork', $file_name);
 
-        //TODO: Add Watermark
-        // $img = Image::make($request['file']);
-        // $img->insert(public_path('images/watermark.png'), 'bottom-right', 20, 20);
-        // $img->save(public_path('artworks', $file_name));
+            $request->merge(['attachment' => $file_name]);
 
-
-        // dd($file_name);
-        $request->merge(['attachment' => $file_name]);
+        }
 
         //Add Artist Request
         $request->request->add(['user_id' => \Auth::user()->id]);
