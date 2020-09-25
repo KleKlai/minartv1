@@ -27,6 +27,8 @@ class UserController extends Controller
                 ->where('name', '!=', 'backdoor')
                 ->get();
 
+        // return view('Admin.Usermanagement.index', compact('users'));
+
         return view('admin.usermanagement.index', compact('users'));
     }
 
