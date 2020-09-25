@@ -28,6 +28,9 @@ class ComponentCategory extends Seeder
             [
             'name'  => 'Sculpture',
             ],
+            [
+            'name'  => 'Mixed Media',
+            ],
         ];
 
         Category::insert($data);

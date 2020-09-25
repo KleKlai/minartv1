@@ -11,7 +11,7 @@
                 @method('PATCH')
 
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Title</label>
                     <input type="text" class="form-control" value="{{ $artwork->name }}" name="name" required>
                 </div>
 

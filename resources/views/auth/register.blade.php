@@ -62,7 +62,6 @@
                         <option value="Regional Group">Regional Group</option>
                         <option value="Special Projects">Special Projects</option>
                         <option value="Featured Artist">Featured Artist</option>
-                        <option value="Mixed Media">Mixed Media</option>
                     </select>
 
                     @error('categories')

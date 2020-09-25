@@ -18,11 +18,9 @@
                 <a href="" class="btn btn-danger btn-sm mb-2"  data-toggle="modal" data-target="#confirmDeleteModal" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">Delete</a>
                 @endcan
 
-                @canany(['curator', 'administrator'])
                 <a href="{{ route('artwork.edit', $artwork) }}" class="btn btn-secondary btn-sm mb-2" style="display: {{ $artwork->status == 'Approve' ? 'none' : '' }};">
                     Edit
                 </a>
-                @endcanany
 
             </form>
         </div>
@@ -44,7 +42,7 @@
                         </div>
                         @endcan
                         <div class="form-group col-md-8">
-                             <label class="text-muted" for="name">Name:</label>
+                             <label class="text-muted" for="name">Title:</label>
                             <input type="text" class="form-control-plaintext" value="{{ $artwork->name }}" readonly>
                         </div>
                     </div>
