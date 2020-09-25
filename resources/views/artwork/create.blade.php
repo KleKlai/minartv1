@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="{{ route('artwork.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('artwork.store')}}" class="form-one-submit" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -124,9 +124,15 @@
                             <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
                         </div>
 
-                        <div class="mt-2">
+                        <div class="mt-2 button-group">
                             <a href="/artwork" class="btn border-none">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary button-one-submit">
+                                Save
+                            </button>
+                        </div>
+
+                        <div class="loading mt-2 alert alert-success" role="alert">
+                            <i class="spinner fa fa-spinner fa-spin"></i> Saving... Please Wait.
                         </div>
                     </div>
 
