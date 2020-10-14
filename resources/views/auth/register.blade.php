@@ -87,7 +87,7 @@
                         <option value="Lumbayao Artist Collective">Lumbayao Artist Collective</option>
                         <option value="Sining Mata Visual Art & Music School">Sining Mata Visual Art & Music School</option>
                         <option value="Studio One Art Iligan">Studio One Art Iligan</option>
-                        <option value="Talaandig Soil Paintings">Talaandig Soil Paintings</option>
+                        <option value="Talaandig Soil Painters">Talaandig Soil Painters</option>
                         <option value="TheBauHaus">TheBauHaus</option>
                         <option value="The Gallery of the Peninsula and the Archipelago">The Gallery of the Peninsula and the Archipelago</option>
                         <option value="TINTA Artists Iligan">TINTA Artists Iligan</option>
