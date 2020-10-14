@@ -29,7 +29,7 @@
                             <td>{{ $user->email }}</td>
                             <!-- <td>{{ $user->mobile }}</td> -->
                             <td>{{ $user->category }}</td>
-                            <td>{{ $user->subcategory }}</td>
+                            <td>{{ $user->subcategory ?? "N/A" }}</td>
                             <td>{{ $user->roles()->get()->pluck('name')->first() }}</td>
                             <td>
                                 {{--  <form action="{{ route('user.destroy', $user) }}" method="POST">

@@ -52,6 +52,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
 
         return Validator::make($data, [
             'name'      => ['required', 'string', 'max:255'],
@@ -78,17 +79,17 @@ class RegisterController extends Controller
 
         // Custom Validate to add subcategory data
         $subcategory = null;
-
+        // dd($data);
         if(!empty($data['gallery'])){
             $subcategory = $data['gallery'];
         }
 
-        if(!empty($data['regional'])){
-            $subcategory = $data['regional'];
+        if(!empty($data['regionalGroup'])){
+            $subcategory = $data['regionalGroup'];
         }
 
-        if(!empty($data['special'])){
-            $subcategory = $data['special'];
+        if(!empty($data['specialProjects'])){
+            $subcategory = $data['specialProjects'];
         }
 
         $user = User::create([
