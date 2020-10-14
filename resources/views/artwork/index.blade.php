@@ -18,14 +18,16 @@
                         @can('administrator')
                         <th scope="col">Artist</th>
                         <!-- <th scope="col">Country</th> -->
-                        <th scope="col">Category</th>
+                        <th scope="col">Group</th>
+                        <th scope="col">Gallery</th>
+                        <th scope="col">Art Category</th>
                         <!-- <th scope="col">Size</th>
                         <th scope="col">Dimension</th> -->
-                        <th scope="col">Subject</th>
+                        {{--  <th scope="col">Subject</th>  --}}
                         <!-- <th scope="col">Style</th>
-                        <th scope="col">Medium</th>
+                        {{--  <th scope="col">Medium</th>  --}}
                         <th scope="col">Material</th> -->
-                        <th scope="col">Price</th>
+                        {{--  <th scope="col">Price</th>  --}}
                         @endcan
                         <th scope="col">Status</th>
                         <th scope="col"></th>
@@ -38,9 +40,11 @@
                                 <td>{{ $data->name }}</td>
                                 @can('administrator')
                                 <td>{{ $data->user->name }}</td>
+                                <td>{{ $data->user->category }}</td>
+                                <td>{{ $data->user->subcategory }}</td>
                                 <td>{{ $data->category }}</td>
-                                <td>{{ $data->subject }}</td>
-                                <td>₱ {{ $data->price }}</td>
+                                {{--  <td>{{ $data->subject }}</td>  --}}
+                                {{--  <td>₱ {{ $data->price }}</td>  --}}
                                 @endcan
                                 <td>{{ $data->status }}</td>
                                 <td>

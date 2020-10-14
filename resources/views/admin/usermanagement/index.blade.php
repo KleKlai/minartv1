@@ -15,6 +15,7 @@
                     <th scope="col">Email</th>
                     <!-- <th scope="col">Mobile</th> -->
                     <th scope="col">Group</th>
+                    <th scope="col">Gallery</th>
                     <th scope="col">Role</th>
                     <th scope="col"></th>
                     </tr>
@@ -27,7 +28,8 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <!-- <td>{{ $user->mobile }}</td> -->
-                            <td>{{ $user->categories }}</td>
+                            <td>{{ $user->category }}</td>
+                            <td>{{ $user->subcategory }}</td>
                             <td>{{ $user->roles()->get()->pluck('name')->first() }}</td>
                             <td>
                                 {{--  <form action="{{ route('user.destroy', $user) }}" method="POST">

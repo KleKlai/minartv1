@@ -33,6 +33,14 @@
                     <div class="form-row">
                         @can('administrator')
                         <div class="form-group col-md-4">
+                             <label class="text-muted" for="name">Group:</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->category }}" readonly>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="text-muted"for="name">Gallery:</label>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->user->subcategory }}" readonly>
+                        </div>
+                        <div class="form-group col-md-4">
                             <label class="text-muted"for="name">Artist:</label>
                             <a href="{{ route('user.show', $artwork->user) }}">
                                 <input type="text" class="form-control-plaintext" value="{{ $artwork->user->name }}" readonly>
@@ -110,7 +118,7 @@
 
                     <div class="form-group">
                      <label class="text-muted" for="description">Description:</span></label>
-                    <textarea name="description" class="form-control-plaintext" rows="3" style="height: 200px;" readonly>{{ $artwork->description }}</textarea>
+                    <textarea name="description" class="form-control-plaintext" rows="3" style="height: 200px; font-style: italic;" readonly>{{ $artwork->description }}</textarea>
                     </div>
                 </div>
             </div>

@@ -36,9 +36,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="categories" class="col-sm-2 col-form-label font-weight-bold">Categories</label>
+                        <label for="categories" class="col-sm-2 col-form-label font-weight-bold">Group</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="categories" value="{{ $user->categories }}">
+                            <input type="text" readonly class="form-control-plaintext" id="categories" value="{{ $user->category }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="categories" class="col-sm-2 col-form-label font-weight-bold">Gallery</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="categories" value="{{ $user->subcategory }}">
                         </div>
                     </div>
 
