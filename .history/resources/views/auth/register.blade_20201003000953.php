@@ -108,7 +108,6 @@
                         <option value="Bangon Luayon">Bangon Luayon</option>
                         <option value="Balay">Balay</option>
                         <option value="Ballpen">Ballpen</option>
-                        <option value="Doodle Mural">Doodle Mural</option>
                     </select>
 
                     @error('specialProjects')
