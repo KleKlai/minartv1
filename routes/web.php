@@ -65,6 +65,8 @@ Route::prefix('help')->namespace('Utility')->group( function() {
     Route::resource('faq', 'FAQController');
 });
 
+Route::get('export', 'Export\Artwork@export')->name('export.art');
+
 // Route::get('addWatermark', function()
 // {
 //     $img = Image::make(public_path('sample_resource/main.jpg'));

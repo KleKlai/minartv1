@@ -12,7 +12,7 @@
 
                 <div class="form-group">
                     <label for="name">Title</label>
-                    <input type="text" class="form-control" value="{{ $artwork->name }}" name="name" required>
+                    <input type="text" class="form-control" value="{{ $artwork->title }}" name="title" required>
                 </div>
 
                 <div class="form-row">

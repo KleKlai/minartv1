@@ -75,7 +75,7 @@ class ArtworkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'          => ['required', 'string'],
+            'title'          => ['required', 'string'],
             'subject'       => ['required', 'string'],
             'city'          => ['required', 'string'],
             'category'      => ['required', 'string'],
@@ -110,10 +110,10 @@ class ArtworkController extends Controller
         $artwork = Artwork::create($request->except(['file']));
 
         //Notify Admin and Curator for submission
-        $message = Auth::user()->name . ' submitted art ' . $request->name;
+        $message = Auth::user()->name . ' submitted art ' . $request->title;
         CustomNotify::Both($artwork->uuid, $message);
 
-        \Session::flash('success', 'Artwork ' . $request->name . ' successfully saved.');
+        \Session::flash('success', 'Artwork ' . $request->title . ' successfully saved.');
 
         return redirect()->route('home');
     }
@@ -166,7 +166,7 @@ class ArtworkController extends Controller
     public function update(Request $request, artwork $artwork)
     {
         $request->validate([
-            'name'          => ['required', 'string'],
+            'title'          => ['required', 'string'],
             'subject'       => ['required', 'string'],
             'city'          => ['required', 'string'],
             'category'      => ['required', 'string'],
@@ -184,7 +184,7 @@ class ArtworkController extends Controller
         $artwork->update($request->all());
 
         //Notify Artist
-        $message = 'Your artwork ' . $artwork->name . ' has been modified.';
+        $message = 'Your artwork ' . $artwork->title . ' has been modified.';
         CustomNotify::Artist($artwork->user_id, $artwork->uuid, $message);
 
         \Session::flash('success', 'Artwork has been update successfully.');
@@ -208,7 +208,7 @@ class ArtworkController extends Controller
             //Delete method
             $artwork->delete();
 
-            \Session::flash('success', $artwork->name . ' deleted successfully!');
+            \Session::flash('success', $artwork->title . ' deleted successfully!');
 
             return redirect()->route('artwork.index');
         }
@@ -222,7 +222,7 @@ class ArtworkController extends Controller
             return response()->download(storage_path("app/public/artwork/{$artwork->attachment}"));
 
         } catch (\Exception  $e){
-            Session::flash('error', $artwork->name . ' could not be downloaded.');
+            Session::flash('error', $artwork->title . ' could not be downloaded.');
             return back();
         }
     }
@@ -238,7 +238,7 @@ class ArtworkController extends Controller
         $artwork->update($request->all());
 
         //Notify Artist
-        $message = 'Your artwork ' . $artwork->name . ' has been ' . $request->status . '.';
+        $message = 'Your artwork ' . $artwork->title . ' has been ' . $request->status . '.';
         CustomNotify::Artist($artwork->user_id, $artwork->uuid, $message);
 
         return back();

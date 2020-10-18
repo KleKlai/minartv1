@@ -37,7 +37,7 @@
 
                         @forelse($artwork as $data)
                             <tr>
-                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->title }}</td>
                                 @can('administrator')
                                 <td>{{ $data->user->name }}</td>
                                 <td>{{ $data->user->category }}</td>

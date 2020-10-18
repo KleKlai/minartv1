@@ -49,7 +49,7 @@
                         @endcan
                         <div class="form-group col-md-8">
                              <label class="text-muted" for="name">Title:</label>
-                            <input type="text" class="form-control-plaintext" value="{{ $artwork->name }}" readonly>
+                            <input type="text" class="form-control-plaintext" value="{{ $artwork->title }}" readonly>
                         </div>
                     </div>
 
