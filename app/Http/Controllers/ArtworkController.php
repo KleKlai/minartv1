@@ -179,7 +179,7 @@ class ArtworkController extends Controller
             'depth'         => ['nullable', 'integer', 'min:0'],
             'price'         => ['required', 'integer', 'min:0'],
             'description'   => ['nullable', 'string'],
-            'file'          => ['nullable'],
+            'file'          => ['nullable', 'mimes:jpg,png,jpeg'],
         ]);
 
         // Upload File
