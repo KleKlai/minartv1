@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
 
-            <form action="{{ route('artwork.update', $artwork)}}" method="POST">
+            <form action="{{ route('artwork.update', $artwork)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -112,12 +112,36 @@
                 </div>
 
                 <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" class="form-control" rows="5" required>{{ $artwork->description }}</textarea>
+                    <label for="description">Description</label>
+                    <textarea name="description" class="form-control" rows="5" required>{{ $artwork->description }}</textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="/artwork" class="btn border-none">Cancel</a>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="attachment">Upload Artwork Photo</label>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="form-control-file" name="file" onchange="readURL(this);"  aria-describedby="Product Image" value="{{ old('attachment') }}">
+                            <!-- <label class="custom-file-label" for="attachment">Choose file</label> -->
+                        </div>
+
+                        <div class="mt-2 button-group">
+                            <a href="/artwork" class="btn border-none">Cancel</a>
+                            <button type="submit" class="btn btn-primary button-one-submit">
+                                Save
+                            </button>
+                        </div>
+
+                        <div class="loading mt-2 alert alert-success" role="alert">
+                            <i class="spinner fa fa-spinner fa-spin"></i> Saving... Please Wait.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img id="imageView" src="" style="max-width:300px; max-height: 500px;"/>
+                        </div>
+                    </div>
+                </div>
             </form>
 
         </div>

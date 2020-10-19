@@ -90,7 +90,7 @@ class ArtworkController extends Controller
             'description'   => ['nullable', 'string'],
             'file'          => ['nullable', 'mimes:jpg,png,jpeg'],
         ]);
-            // dd($request);
+
         // Upload File
         if($request->hasFile('file')){
             $file_extention = $request['file']->getClientOriginalExtension();
@@ -179,9 +179,21 @@ class ArtworkController extends Controller
             'depth'         => ['nullable', 'integer', 'min:0'],
             'price'         => ['required', 'integer', 'min:0'],
             'description'   => ['nullable', 'string'],
+            'file'          => ['nullable'],
         ]);
 
-        $artwork->update($request->all());
+        // Upload File
+        if($request->hasFile('file')){
+            $file_extention = $request['file']->getClientOriginalExtension();
+            // File Name Structure: TimeUploaded_UserWhoUpload.FileExtension
+            $file_name = time().rand(99,999).'_'.\Auth::user()->name.'.'.$file_extention;
+            $file_path = $request['file']->storeAs('public/artwork', $file_name);
+
+            $request->merge(['attachment' => $file_name]);
+
+        }
+
+        $artwork->update($request->except(['file']));
 
         //Notify Artist
         $message = 'Your artwork ' . $artwork->title . ' has been modified.';
