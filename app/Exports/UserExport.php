@@ -9,9 +9,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class UserExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+
     public function collection()
     {
         return User::all();
