@@ -19,11 +19,13 @@ class ArtExport implements FromCollection, WithHeadings, ShouldAutoSize
 
     public function collection()
     {
-        $statament = User::join('artworks', 'artworks.user_id', '=', 'users.id')
-                            ->select('users.name', 'artworks.title', 'artworks.medium', 'artworks.height', 'artworks.width', 'artworks.depth')
-                            ->get();
+        // $statament = User::join('artworks', 'artworks.user_id', '=', 'users.id')
+        //                     ->select('users.name', 'artworks.title', 'artworks.medium', 'artworks.height', 'artworks.width', 'artworks.depth')
+        //                     ->get();
 
-        return $statament;
+        // return $statament;
+
+        return Artwork::all();
     }
 
     public function registerEvents(): array
@@ -38,13 +40,8 @@ class ArtExport implements FromCollection, WithHeadings, ShouldAutoSize
 
     public function headings(): array
     {
-        return [
-            'Artist',
-            'Title',
-            'Medium',
-            'Heigh',
-            'Width',
-            'Depth'
-        ];
+        $column = \DB::getSchemaBuilder()->getColumnListing('artworks');
+
+        return $column;
     }
 }
