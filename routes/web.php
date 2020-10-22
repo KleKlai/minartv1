@@ -66,6 +66,7 @@ Route::prefix('help')->namespace('Utility')->group( function() {
 });
 
 Route::get('export', 'Export\Artwork@export')->name('export.art');
+Route::get('export/user', 'Export\Artwork@export')->name('export.user');
 
 // Route::get('addWatermark', function()
 // {
