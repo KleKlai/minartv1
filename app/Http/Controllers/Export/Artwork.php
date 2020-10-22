@@ -16,7 +16,7 @@ class Artwork extends Controller
     }
 
     public function exportUser(){
-        return Excel::download(new UserExport, 'Artwork.xlsx');
+        return Excel::download(new UserExport, 'User.xlsx');
     }
 
 }
